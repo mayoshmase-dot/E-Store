@@ -14,9 +14,9 @@ import { display, flex } from '@mui/system';
 
 export default function Navbar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box>
       <AppBar position="static" sx={{ backgroundColor: "rgb(255, 255, 255)", boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)' }}>
-        <Toolbar sx={{display:'flex' , justifyContent:'space-between'}}>
+        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h6" component="div" sx={{ color: "rgb(0, 0, 0)" }}>
             Cyber
           </Typography>
@@ -26,20 +26,20 @@ export default function Navbar() {
             <Link component={RouterLink} to={'/login'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Login</Link>
             <Link component={RouterLink} to={'/register'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Register</Link>
           </Box>
-              <Box sx={{display:{xs:'none' , sm:'flex'} , gap:3}}>
-              <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
-                <FavoriteBorderIcon />
-              </IconButton>
-              <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
-                <ShoppingCartOutlinedIcon />
-              </IconButton>
-              <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
-                <PersonOutlineOutlinedIcon />
-              </IconButton>
-              </Box>
-              <IconButton sx={{color: 'rgb(0, 0, 0)', display: { xs: 'flex', sm: 'none' }}}>
-              <MenuIcon />
-              </IconButton>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
+            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
+              <FavoriteBorderIcon />
+            </IconButton>
+            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
+              <ShoppingCartOutlinedIcon />
+            </IconButton>
+            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
+              <PersonOutlineOutlinedIcon />
+            </IconButton>
+          </Box>
+          <IconButton sx={{ color: 'rgb(0, 0, 0)', display: { xs: 'flex', sm: 'none' } }}>
+            <MenuIcon />
+          </IconButton>
 
         </Toolbar>
       </AppBar>
