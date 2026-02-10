@@ -20,11 +20,11 @@ export default function Navbar() {
           <Typography variant="h6" component="div" sx={{ color: "rgb(0, 0, 0)" }}>
             Cyber
           </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 4 }}>
-            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Home</Link>
-            <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Cart</Link>
-            <Link component={RouterLink} to={'/login'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Login</Link>
-            <Link component={RouterLink} to={'/register'} underline='none' sx={{ color: "rgb(0, 0, 0)" }}>Register</Link>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5 }}>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)' }}>Home</Link>
+            <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Cart</Link>
+            <Link component={RouterLink} to={'/login'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Login</Link>
+            <Link component={RouterLink} to={'/register'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Register</Link>
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
             <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
