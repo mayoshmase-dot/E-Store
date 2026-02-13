@@ -20,8 +20,7 @@ export default function Register() {
   }
   return (
     <Box  display={'flex'} justifyContent={'center'} alignItems={'center'} >
-
-    <Box component={'section'} my={4} display={'flex'} flexDirection={'column'}
+    <Box component={'section'} my={4} display={'flex'} flexDirection={'column'} bgcolor={'rgba(205, 207, 207, 0.34)'}
       mx={'auto'} p={3} boxShadow={'0px 1px 3px rgba(0, 0, 0, 0.63)'} borderRadius={5}>
       <Box display={'flex'} flexDirection={'column'} gap={2}>
         <Typography component={'h1'} variant='p'>Register</Typography>
