@@ -1,22 +1,26 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Box, Button, Link, TextField, Typography, Checkbox } from '@mui/material';
+import { Box, Button, Link, TextField, Typography, Checkbox, CircularProgress } from '@mui/material';
 import { Link as ReactLink } from 'react-router-dom'
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { registerSchema } from '../../../validation/RegisterSchema';
+import { useState } from 'react';
 
 export default function Register() {
-  const { register, handleSubmit, formState: { errors } } = useForm({ resolver: yupResolver(registerSchema) });
+  const [serverErrors, setServerErrors] = useState([]);
+  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ resolver: yupResolver(registerSchema) });
   const registerForm = async (values) => {
     try {
       const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/Register', values);
       console.log("response", response);
     }
     catch (error) {
-      console.log("Registration Error:", error.message)
+      setServerErrors([error.response.data.errors])
     }
   }
   return (
+    <Box  display={'flex'} justifyContent={'center'} alignItems={'center'} >
+
     <Box component={'section'} my={4} display={'flex'} flexDirection={'column'}
       mx={'auto'} p={3} boxShadow={'0px 1px 3px rgba(0, 0, 0, 0.63)'} borderRadius={5}>
       <Box display={'flex'} flexDirection={'column'} gap={2}>
@@ -25,6 +29,16 @@ export default function Register() {
           <Link component={ReactLink} to={'/login'} underline='none' color='black' fontWeight={'bold'}> log in</Link>
         </Typography>
       </Box>
+      {serverErrors?.length > 0 && (
+        <Box mt={2}>
+          {serverErrors.map((err) => (
+            <Typography color='red'>
+              {err}
+            </Typography>
+          ))}
+        </Box>
+      )}
+
       <Box component={'form'} display={'flex'} flexDirection={'column'} gap={3} mt={2}
         onSubmit={handleSubmit(registerForm)} >
         <TextField {...register('userName')} fullWidth label="User Name " variant="standard"
@@ -50,9 +64,9 @@ export default function Register() {
             </Box>
           </Typography>
         </Box>
-        <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }}>Submit</Button>
+        <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }} disabled={isSubmitting}>{isSubmitting ? <CircularProgress /> : "Register"}</Button>
 
       </Box>
-    </Box >
+    </Box ></Box>
   )
 }

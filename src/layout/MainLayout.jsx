@@ -8,7 +8,7 @@ export default function MainLayout() {
     return (
         <>
             <Navbar />
-            <Container maxWidth='sm'> 
+            <Container maxWidth='lg'> 
                 <Outlet />
             </Container>
             <Footer />

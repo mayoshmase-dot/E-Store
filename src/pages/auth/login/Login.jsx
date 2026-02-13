@@ -7,6 +7,7 @@ import { LoginSchema } from '../../../validation/LoginSchema';
 import { CheckBox } from '@mui/icons-material';
 
 export default function Login() {
+  
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema)
   });
@@ -20,8 +21,9 @@ export default function Login() {
     }
   }
   return (
-    <Box display={'flex'} justifyContent={'center'}  >
-      <Box component={'section'} my={5} display={'flex'} flexDirection={'column'} width={'70%'}
+
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'}  >
+      <Box component={'section'} my={5} display={'flex'} flexDirection={'column'}
         p={3} mt={10} boxShadow={'0px 1px 3px rgba(0, 0, 0, 0.63)'} borderRadius={5}>
         <Box display={'flex'} flexDirection={'column'} gap={2}>
           <Typography component={'h1'} variant='p'>Login</Typography>
@@ -34,7 +36,7 @@ export default function Login() {
           <TextField {...register('password')} fullWidth label="Password" variant="standard"
             error={errors.password} helperText={errors.password?.message} />
 
-          <Box display="flex" alignItems="center" width="100%">
+          <Box display="flex" gap={1} alignItems="center" width="100%">
             <Checkbox />
             <Typography variant="body2" sx={{ color: '#9CA3AF' }}>
               Remember me
