@@ -11,7 +11,7 @@ export default function Categories() {
             {data.response.map((category) => (
                 <Card sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', p: 7,  flex: "1 1 200px" , backgroundColor: 'rgba(205, 207, 207, 0.34)' }}>
                     <Typography textAlign={'center'} >
-                        {category.name}
+                        {category.name} 
                     </Typography>
                 </Card>
             ))}

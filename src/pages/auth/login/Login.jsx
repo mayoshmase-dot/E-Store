@@ -4,6 +4,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { LoginSchema } from '../../../validation/LoginSchema';
+import axiosInstance from '../../../api/axiosInstance';
 
 export default function Login() {
   
@@ -12,7 +13,7 @@ export default function Login() {
   });
   const LoginForm = async (values) => {
     try {
-      const response = await axios.post('https://knowledgeshop.runasp.net/api/auth/Account/Login', values);
+      const response = await axiosInstance.post('/auth/Account/Login', values);
       console.log("response", response);
     }
     catch (error) {
