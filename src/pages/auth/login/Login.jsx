@@ -1,7 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography, Link, Checkbox, Grid } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
-import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { LoginSchema } from '../../../validation/LoginSchema';
 import axiosInstance from '../../../api/axiosInstance';

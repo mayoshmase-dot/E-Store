@@ -1,4 +1,3 @@
-import React from 'react'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,7 +9,6 @@ import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined
 import { Link } from '@mui/material';
 import { Link as RouterLink } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
-import { display, flex } from '@mui/system';
 
 export default function Navbar() {
   return (
