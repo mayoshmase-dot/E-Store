@@ -7,7 +7,7 @@ export default function useProducts() {
         return response.data;
     }
     const query = useQuery({
-        queryKey: [products, 'en'],
+        queryKey: ['products', 'en'],
         queryFn: getProducts,
     })
     return query
