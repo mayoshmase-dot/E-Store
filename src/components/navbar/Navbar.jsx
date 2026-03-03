@@ -18,7 +18,7 @@ export default function Navbar() {
       <AppBar position="static" sx={{ backgroundColor: "rgb(255, 255, 255)", boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)' }}>
         <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h6" component="div" sx={{ color: "rgb(0, 0, 0)" }}>
-            Cyber
+            Store
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5 }}>
             <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)' }}>Home</Link>
