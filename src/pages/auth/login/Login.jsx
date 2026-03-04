@@ -23,8 +23,8 @@ export default function Login() {
     }
   }
   return (
-    <Box display={'flex'} justifyContent={'center'} alignItems={'center'}>
-      <Box component={'section'} my={5} display={'flex'} flexDirection={'column'} bgcolor={'rgba(205, 207, 207, 0.34)'}
+    <Box display={'flex'} justifyContent={'center'} alignItems={'center'} py={2}>
+      <Box component={'section'} display={'flex'} flexDirection={'column'} bgcolor={'rgba(205, 207, 207, 0.34)'}
         mt={5} p={6} boxShadow={'0px 1px 3px rgba(0, 0, 0, 0.63)'} borderRadius={5}>
         <Box display={'flex'} flexDirection={'column'} gap={2}>
           <Typography component={'h1'} variant='p'>Login</Typography>
