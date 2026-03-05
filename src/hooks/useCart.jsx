@@ -3,7 +3,7 @@ import AuthAxiosInstance from '../api/AuthAxiosInstance';
 
 export default function useCart() {
     const getItem = async () => {
-        const response = await AuthAxiosInstance.get('/Cart');
+        const response = await AuthAxiosInstance.get('/Carts');
         return response.data
     }
     const query = useQuery({
