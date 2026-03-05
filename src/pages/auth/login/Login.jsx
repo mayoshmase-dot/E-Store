@@ -1,12 +1,14 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Button, TextField, Typography, Link, Checkbox, Grid } from '@mui/material';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form'
 import { LoginSchema } from '../../../validation/LoginSchema';
 import axiosInstance from '../../../api/axiosInstance';
+import useAuthStore from '../../../store/useAuthStore';
 
 export default function Login() {
-
+ const setToken = useAuthStore ((state)=>state.setToken)
+ const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema)
   });
@@ -14,7 +16,8 @@ export default function Login() {
     try {
       const response = await axiosInstance.post('/auth/Account/Login', values);
       if (response.status == 200) {
-        localStorage.setItem("accessToken", response.data.accessToken)
+        setToken(response.data.accessToken);
+        navigate('/');
       }
       console.log("response", response);
     }
