@@ -1,7 +1,7 @@
 import axiosInstance from '../api/axiosInstance'
 import { useQuery } from '@tanstack/react-query';
 
-export default function useProducts(limit=2) {
+export default function useProducts(limit=3) {
     const getProducts = async () => {
         const response = await axiosInstance.get(`/Products?limit=${limit}`);
         return response.data;
