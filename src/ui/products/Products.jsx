@@ -11,7 +11,6 @@ export default function Products({ product }) {
                 <Typography component={'span'} variant='body1' fontWeight={'bold'}>
                     ${product.price}
                 </Typography>
-                <Button type='submit' sx={{ backgroundColor: 'black', color: 'white' }}>Buy Now</Button>
             </CardContent>
         </Card>
     )
