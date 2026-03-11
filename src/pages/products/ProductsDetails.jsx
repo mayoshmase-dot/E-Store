@@ -8,7 +8,6 @@ export default function ProductsDetails() {
     const { id } = useParams();
     const { data, isLoading, isError, error } = useProductDetails({ id });
     const { mutate, isPending } = useAddCart();
-    console.log(data)
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
@@ -25,9 +24,11 @@ export default function ProductsDetails() {
                                 <Typography variant='h5'>{data.response.name}</Typography>
                                 <Typography variant='span' fontWeight={'bold'} display={'block'}>${data.response.price}</Typography>
                                 <Rating readOnly value={data.response.rate}> </Rating>
+                                <Typography variant='h5'>{data.response.quantity}</Typography>
+
                             </Box>
                             <Typography variant='body2'>{data.response.description}</Typography>
-                            <Button sx={{ backgroundColor: 'black', color: 'white' }} disabled={isPending} onClick={() => mutate({ ProductId: data.response.id, Count:1 ,})}>Add To Cart</Button>
+                            <Button sx={{ backgroundColor: 'black', color: 'white' }} disabled={isPending} onClick={() => mutate({ ProductId: data.response.id, Count: 1, })}>Add To Cart</Button>
 
                         </Box>
                     </Grid>
