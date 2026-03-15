@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import useProducts from '../../hooks/useProducts'
 import Loader from '../../ui/loader/Loader';
 import Product from '../../ui/products/Products';
@@ -8,6 +8,7 @@ export default function ProductPage() {
         if (isLoading) return <Loader />
         if (isError) return <Box color={'red'}>{error.message}</Box>
   return (
+    <Container maxWidth={'md'} >
     <Box py={5}>
             <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                 Products
@@ -19,5 +20,6 @@ export default function ProductPage() {
                     </Grid>)}
             </Grid>
         </Box>
+        </Container>
   )
 }

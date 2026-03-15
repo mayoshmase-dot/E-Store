@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
+import { Box, Card, CardContent, Container, Grid, Typography } from '@mui/material';
 import useCategories from '../../hooks/useCategories';
 import Loader from '../../ui/loader/Loader';
 
@@ -9,6 +9,7 @@ export default function Categories() {
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
     return (
+        <Container maxWidth={'md'} >
         <Box>
             <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>Browse By Category</Typography>
             <Grid container spacing={5}>
@@ -28,5 +29,6 @@ export default function Categories() {
 
 
         </Box >
+        </Container>
     )
 }
