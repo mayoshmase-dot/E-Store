@@ -1,5 +1,5 @@
 import { Box, Button, CardMedia, Typography } from "@mui/material"
-import banner from "../../assets/img/Banner.webp"
+import banner from "../../assets/img/banner2.webp"
 
 export default function Banner() {
     return (
