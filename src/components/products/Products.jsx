@@ -1,4 +1,4 @@
-import { Box,Container, Button, Grid, Link, Typography } from '@mui/material';
+import { Box, Container, Button, Grid, Link, Typography } from '@mui/material';
 import useProducts from '../../hooks/useProducts'
 import Loader from '../../ui/loader/Loader';
 import Product from '../../ui/products/Products';
@@ -12,7 +12,7 @@ export default function Products() {
     return (
         <Container maxWidth='md'>
 
-            <Box py={5}>
+            <Box my={5}>
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                     Products
                 </Typography>
@@ -28,6 +28,6 @@ export default function Products() {
                 <Link component={ReactLink} to={'products'} underline='none' sx={{ display: 'flex', justifyContent: 'center', mt: 5, alignItems: 'center' }}>
                     <Button type='submit' sx={{ backgroundColor: 'black', color: 'white', px: 3 }}>Show More</Button></Link>
             </Box>
-            </Container>
-            )
+        </Container>
+    )
 }

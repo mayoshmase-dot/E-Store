@@ -8,7 +8,7 @@ import { Box, Grid, CardMedia, Typography, Button } from '@mui/material'
 
 export default function FeaturedSection() {
   return (
-    <Box my={5}>
+    <Box>
       <Grid container>
         <Grid item size={{ xs: 12, md: 6 }}>
           <Box display={'flex'} flexDirection={{xs:'column' , md:'row'}} textAlign={'center'} alignItems={'center'} gap={2}>
