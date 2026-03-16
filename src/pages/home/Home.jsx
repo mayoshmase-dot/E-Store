@@ -1,3 +1,4 @@
+import Banner from '../../components/banner/Banner'
 import Categories from '../../components/categories/Categories'
 import Discounts from '../../components/discounts/Discounts'
 import FeaturedSection from '../../components/featuredSection/FeaturedSection'
@@ -12,6 +13,7 @@ export default function Home() {
       <FeaturedSection />
       <Categories />
       <Discounts />
+      <Banner />
     </>
   )
 }
