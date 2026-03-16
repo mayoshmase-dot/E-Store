@@ -11,7 +11,7 @@ export default function FeaturedSection() {
     <Box>
       <Grid container>
         <Grid item size={{ xs: 12, md: 6 }}>
-          <Box display={'flex'} flexDirection={{xs:'column' , md:'row'}} textAlign={'center'} alignItems={'center'} gap={2}>
+          <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} textAlign={'center'} alignItems={'center'} gap={2}>
             <Box>
               <CardMedia component="img" image={PlayStation}
                 alt="iphone" sx={{ height: 400, objectFit: "contain", width: "100%" }} />
@@ -21,8 +21,8 @@ export default function FeaturedSection() {
               <Typography variant='body1'>Incredibly powerful CPUs, GPUs, and an SSD with integrated I/O will redefine your PlayStation experience.</Typography>
             </Box>
           </Box>
-          <Box display={'flex'} flexDirection={{xs:'column' , md:'row'}} textAlign={'center'}>
-            <Box display={'flex'} alignItems={'center'} flexDirection={{xs:'column' , md:'row'}} gap={5} bgcolor={'#EDEDED'} >
+          <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} textAlign={'center'}>
+            <Box display={'flex'} alignItems={'center'} flexDirection={{ xs: 'column', md: 'row' }} gap={5} bgcolor={'#EDEDED'} >
               <Box>
                 <CardMedia component="img" image={hero}
                   alt="iphone" sx={{ height: 400, objectFit: "contain", width: "100%" }} />
@@ -37,14 +37,14 @@ export default function FeaturedSection() {
             </Box>
 
             <Box>
-              <Box display={'flex'} flexDirection={{xs:'column' , md:'row'}} height={'100%'} textAlign={'center'} alignItems={'center'} gap={5} bgcolor={'#353535'}>
+              <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} height={'100%'} textAlign={'center'} alignItems={'center'} gap={5} bgcolor={'#353535'}>
                 <Box>
                   <CardMedia component="img" image={image}
                     alt="iphone" sx={{ height: 400, objectFit: "contain", width: "100%" }} />
                 </Box>
                 <Box color={'white'}>
-                    <Typography component={'h2'} variant='h4'>Apple</Typography>
-                    <Typography component={'h2'} variant='h4' fontWeight={'bold'}>Vision Pro</Typography>
+                  <Typography component={'h2'} variant='h4'>Apple</Typography>
+                  <Typography component={'h2'} variant='h4' fontWeight={'bold'}>Vision Pro</Typography>
                   <Typography variant='body1' color="#909090">An immersive way to experience entertainment</Typography>
                 </Box>
               </Box>
@@ -52,7 +52,7 @@ export default function FeaturedSection() {
             </Box>
           </Box>
         </Grid>
-        <Grid item size={{ xs: 12, md: 6 }} display={'flex'} flexDirection={{xs:'column' , md:'row'}} gap={5} alignItems={'center'} bgcolor={"#EDEDED"} pl={5} >
+        <Grid item size={{ xs: 12, md: 6 }} display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={5} alignItems={'center'} bgcolor={"#EDEDED"} pl={5} >
           <Box display={'flex'} flexDirection={'column'} gap={3} alignItems={'flex-start'}>
             <Box>
               <Typography component={'h2'} variant='h4'>Macbook</Typography>

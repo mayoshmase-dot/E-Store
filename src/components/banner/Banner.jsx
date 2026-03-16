@@ -3,7 +3,7 @@ import banner from "../../assets/img/Banner.webp"
 
 export default function Banner() {
     return (
-        <Box my={5}>
+        <Box mt={5}>
             <Box position="relative">
                 <CardMedia component="img" image={banner} sx={{ width: "100%", objectFit: "cover" }}/>
 
