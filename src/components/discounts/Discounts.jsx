@@ -35,7 +35,7 @@ export default function Discounts() {
                     <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} p={3} bgcolor={'#F6F6F6'} textAlign={'center'} display={'flex'} flexDirection={'column'} gap={2}>
                         <CardMedia component="img" image={AppleWatch}
                             alt="iphone" sx={{ objectFit: "contain", width: "100%" }} />
-                        <Typography variant='body2'>
+                        <Typography variant='body2' fontSize={12.5}>
                             Apple Watch Series 9 GPS 41mm Starlight Aluminium
                         </Typography>
                         <Typography variant='span' fontWeight={'bold'}>$399</Typography>

@@ -1,8 +1,4 @@
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
+import { AppBar, Box, Toolbar, Typography, IconButton, Badge } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
@@ -10,16 +6,18 @@ import { Link } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
 import useAuthStore from '../../store/useAuthStore';
+import useCart from '../../hooks/useCart'
 
 export default function Navbar() {
   const token = useAuthStore((state) => state.token)
-    const logout = useAuthStore ((state)=>state.logout)
-    const navigate = useNavigate()
-    const handleLogout = ()=>{
-      logout();
-     navigate('/login');
-    }
-
+  const logout = useAuthStore((state) => state.logout)
+  const navigate = useNavigate()
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  }
+  const { data } = useCart()
+  const cartCount = data?.items?.length || 0
   return (
     <Box>
       <AppBar position="static" sx={{ backgroundColor: "rgb(255, 255, 255)", boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)' }}>
@@ -32,7 +30,10 @@ export default function Navbar() {
             {token ?
               (
                 <>
-                  <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Cart</Link>
+                  <Badge badgeContent={4} color="secondary">
+                    <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Cart
+                    </Link>
+                  </Badge>
                   <Link component={'button'} onClick={handleLogout} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Logout</Link>
                 </>
               ) :
@@ -60,6 +61,6 @@ export default function Navbar() {
           </IconButton>
         </Toolbar>
       </AppBar>
-    </Box>
+    </Box >
   )
 }
