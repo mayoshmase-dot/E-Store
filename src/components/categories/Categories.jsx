@@ -9,7 +9,7 @@ export default function Categories() {
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
     return (
-        <Container maxWidth={'md'} >
+        <Container maxWidth={'lg'} >
         <Box my={5}>
             <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>Browse By Category</Typography>
             <Grid container spacing={5}>

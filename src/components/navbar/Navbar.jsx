@@ -16,8 +16,9 @@ export default function Navbar() {
     logout();
     navigate('/login');
   }
-  const { data } = useCart()
-  const cartCount = data?.items?.length || 0
+  const {data} = useCart()
+  const cartCount= data?.items?.length || 0;
+console.log(cartCount)
   return (
     <Box>
       <AppBar position="static" sx={{ backgroundColor: "rgb(255, 255, 255)", boxShadow: '0px 1px 3px rgba(0, 0, 0, 0.1)' }}>
@@ -30,7 +31,7 @@ export default function Navbar() {
             {token ?
               (
                 <>
-                  <Badge badgeContent={4} color="secondary">
+                  <Badge badgeContent={cartCount} color="secondary">
                     <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>Cart
                     </Link>
                   </Badge>

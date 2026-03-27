@@ -6,7 +6,7 @@ import AppleiPhone14Pro1TB from "../../assets/img/Apple iPhone 14 Pro 1TB.webp"
 
 export default function Discounts() {
     return (
-        <Container maxWidth={'md'}>
+        <Container maxWidth={'lg'}>
             <Box >
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                     Discounts up to -50%
