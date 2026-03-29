@@ -9,5 +9,4 @@ const AuthAxiosInstance = axios.create({
     Authorization: `Bearer ${token}`,
   },
 });
-
 export default AuthAxiosInstance;
