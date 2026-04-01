@@ -30,7 +30,7 @@ export default function Cart() {
   if (isError) return <Box color={'red'}>{error.message}</Box>
   return (
     <Container maxWidth={'lg'}>
-      <Box display={{ xs: 'block', md: 'flex' }} gap={5} >
+      <Box display={{ xs: 'primary.main', md: 'flex' }} gap={5} >
         <Box my={5} flex={2}>
   <Typography fontWeight={'bold'} variant='h5' mb={3}>
     {t('Shopping Cart')}

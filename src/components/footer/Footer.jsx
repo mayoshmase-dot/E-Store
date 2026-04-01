@@ -8,12 +8,12 @@ export default function Footer() {
   const {t} = useTranslation();
 
   return (
-    <Box bgcolor={'#000000'} color={'white'}>
+    <Box bgcolor={'primary.main'} color={'white'}>
       <Container maxWidth={'lg'}>
         <Grid container p={5} spacing={5}>
           <Grid item size={{ xs: 12, sm: 6, md: 4 }} display={'flex'} flexDirection={'column'} gap={3}>
             <Typography component={'h2'} variant='h5'>
-              Cyber
+              Store
             </Typography>
             <Typography variant='body2' color='#CFCFCF'>
               {t('We are a residential interior design firm located in Portland. Our boutique-studio offers more than')}

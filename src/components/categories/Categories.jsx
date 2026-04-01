@@ -16,7 +16,7 @@ export default function Categories() {
                 <Grid container spacing={5}>
                     {data.response.data.map((category) =>
                         <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={category.id}>
-                            <Card sx={{ py: 3, backgroundColor: 'rgba(205, 207, 207, 0.34)', textAlign: 'center' }}>
+                            <Card sx={{ py: 3, backgroundColor: 'secondary.main', textAlign: 'center' }}>
                                 <CardContent>
                                     <Typography component={'h3'} variant='body1' fontWeight={'bold'}>
                                         {category.name}

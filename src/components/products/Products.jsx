@@ -13,21 +13,20 @@ export default function Products() {
 
     return (
         <Container maxWidth='lg'>
-
             <Box my={5}>
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                     {t('Products')}
                 </Typography>
                 <Grid container spacing={5}>
                     {data.response.data.map((product) =>
-                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={product.id}>
+                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} bgcolor={'secondary.main'} key={product.id}>
                             <Link component={ReactLink} to={`/product/${product.id}`} underline='none' >
                                 <Product product={product} />
                             </Link>
                         </Grid>)}
                 </Grid>
                 <Link component={ReactLink} to={'products'} underline='none' sx={{ display: 'flex', justifyContent: 'center', mt: 5, alignItems: 'center' }}>
-                    <Button type='submit' sx={{ backgroundColor: 'black', color: 'white', px: 3 }}>{t('Show More')}</Button></Link>
+                    <Button type='submit' sx={{ backgroundColor: 'primary.main', color: 'white', px: 3 }}>{t('Show More')}</Button></Link>
             </Box>
         </Container>
     )

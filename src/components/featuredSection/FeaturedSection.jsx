@@ -23,7 +23,7 @@ export default function FeaturedSection() {
           </Box>
 
           <Box display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} textAlign={'center'}>
-            <Box display={'flex'} alignItems={'center'} flexDirection={{ xs: 'column', md: 'row' }} gap={2} bgcolor={'#EDEDED'}>
+            <Box display={'flex'} alignItems={'center'} flexDirection={{ xs: 'column', md: 'row' }} gap={2} bgcolor={'secondary.main'}>
               <Box>
                 <CardMedia component="img" image={hero}
                   alt="iphone" sx={{ height: 200, objectFit: "contain", width: "100%" }} />
@@ -49,14 +49,14 @@ export default function FeaturedSection() {
           </Box>
         </Grid>
 
-        <Grid item size={{ xs: 12, md: 6 }} display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={2} alignItems={'center'} bgcolor={"#EDEDED"} pl={3}>
+        <Grid item size={{ xs: 12, md: 6 }} display={'flex'} flexDirection={{ xs: 'column', md: 'row' }} gap={2} alignItems={'center'} bgcolor={"secondary.main"} pl={3}>
           <Box display={'flex'} flexDirection={'column'} gap={2}  sx={{ alignItems:{sm:"center", md:'flex-start'}}} p={1}>
             <Box>
               <Typography component={'h2'} variant='h6'>Macbook</Typography>
               <Typography component={'h2'} variant='h5' fontWeight={'bold'}>Air</Typography>
             </Box>
             <Typography variant='body2' color="#909090">{t('The new 15‑inch MacBook Air makes room for more of what you love with a spacious Liquid Retina display.')}</Typography>
-            <Button sx={{ border: '1px solid black', color: 'black', textAlign: 'center', px: 2 }} >{t('Shop Now')}</Button>
+            <Button sx={{ border: '1px solid', borderColor:'primary.main', color: 'primary.main', textAlign: 'center', px: 2 }} >{t('Shop Now')}</Button>
           </Box>
           <Box>
             <CardMedia component="img" image={Screen}

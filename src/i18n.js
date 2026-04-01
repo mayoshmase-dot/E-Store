@@ -63,6 +63,7 @@ i18n
                     "Cash": "Cash" ,
                     "Visa": "Visa" ,
                     "Pay Now": "Pay Now",
+                    "Remove": "Remove"
                 }
             },
             ar: {
@@ -121,7 +122,8 @@ i18n
                     "Checkout": "الدفع",
                     "Cash": "نقدي",
                     "Visa": "فيزا",
-                    "Pay Now": "ادفع الآن"
+                    "Pay Now": "ادفع الآن",
+                    "Remove": "حذف"
 
                 }
             }
