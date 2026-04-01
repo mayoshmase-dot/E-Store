@@ -3,8 +3,10 @@ import { useParams } from 'react-router-dom';
 import Loader from '../../ui/loader/Loader';
 import { Box, Button, Card, CardMedia, Grid, Rating, Typography } from '@mui/material';
 import useAddCart from '../../hooks/useAddCart';
+import { useTranslation } from 'react-i18next';
 
 export default function ProductsDetails() {
+    const {t} = useTranslation();
     const { id } = useParams();
     const { data, isLoading, isError, error } = useProductDetails({ id });
     const { mutate, isPending } = useAddCart();
@@ -28,7 +30,7 @@ export default function ProductsDetails() {
 
                             </Box>
                             <Typography variant='body2'>{data.response.description}</Typography>
-                            <Button sx={{ backgroundColor: 'black', color: 'white' }} disabled={isPending} onClick={() => mutate({ ProductId: data.response.id, Count: 1, })}>Add To Cart</Button>
+                            <Button sx={{ backgroundColor: 'black', color: 'white' }} disabled={isPending} onClick={() => mutate({ ProductId: data.response.id, Count: 1, })}>{t('Add To Cart')}</Button>
 
                         </Box>
                     </Grid>

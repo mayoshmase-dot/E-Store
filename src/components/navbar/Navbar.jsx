@@ -2,6 +2,9 @@ import { AppBar, Box, Toolbar, Typography, IconButton, Badge } from '@mui/materi
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import LoginIcon from '@mui/icons-material/Login';
+import LogoutIcon from '@mui/icons-material/Logout';
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import { Link } from '@mui/material';
 import { Link as RouterLink, useNavigate } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
@@ -34,40 +37,45 @@ export default function Navbar() {
             {t('Store')}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5 }}>
-            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)' }}>{t('Home')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)' ,'&:hover': { color: 'black' } }}>{t('Home')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)','&:hover': { color: 'black' } }}>{t('About')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)', '&:hover': { color: 'black' } }}>{t('Contact Us')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'rgb(144, 151, 155)','&:hover': { color: 'black' } }}>{t('Blog')}</Link>
+
+          </Box>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }}}>
+
+            <button onClick={changeLanguage}>{i18n.language === "ar" ? "EN" : "AR"}</button>
+
+            <IconButton sx={{ color: 'rgb(0, 0, 0)' , '&:hover': { color: 'rgb(144, 151, 155)' }}}>
+              <FavoriteBorderIcon />
+            </IconButton>
             {token ?
               (
                 <>
-                  <Badge badgeContent={cartCount} color="secondary">
-                    <Link component={RouterLink} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>{t('Cart')}
-                    </Link>
+                  <Badge badgeContent={cartCount} color="secondary" >
+                      <IconButton component={RouterLink} to={'/cart'} sx={{ color: 'rgb(0, 0, 0)' , '&:hover': { color: 'rgb(144, 151, 155)' } }} ><ShoppingCartOutlinedIcon />
+                      </IconButton>
                   </Badge>
-                  <Link component={'button'} onClick={handleLogout} to={'/cart'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>{t('Logout')}</Link>
+                    <IconButton component={'button'} onClick={handleLogout} underline='none' sx={{ color: 'rgb(0, 0, 0)' , '&:hover': { color: 'rgb(144, 151, 155)' } }}><LogoutIcon />
+                    </IconButton>
                 </>
               ) :
               (
                 <>
-                  <Link component={RouterLink} to={'/login'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>{t('Login')}</Link>
-                  <Link component={RouterLink} to={'/register'} underline='none' sx={{ color: 'rgb(144, 151, 155) ' }}>{t('Register')}</Link>
+                  <IconButton component={RouterLink} to={'/login'} sx={{ color: 'black' , '&:hover': { color: 'rgb(144, 151, 155)' } }}>
+                    <LoginIcon />
+                  </IconButton>
+                    <IconButton component={RouterLink} to={'/register'}  sx={{ color: 'rgb(0, 0, 0) ' , '&:hover': { color: 'rgb(144, 151, 155)' } }}><PersonAddIcon />
+                  </IconButton>
                 </>
               )
             }
-          </Box>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
-
-            <button onClick={changeLanguage}>{i18n.language === "ar" ? "EN" : "AR"}</button>
-
-            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
-              <FavoriteBorderIcon />
-            </IconButton>
-            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
-              <ShoppingCartOutlinedIcon />
-            </IconButton>
-            <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
+            <IconButton sx={{ color: 'rgb(0, 0, 0)' , '&:hover': { color: 'rgb(144, 151, 155)' } }} >
               <PersonOutlineOutlinedIcon />
             </IconButton>
           </Box>
-          <IconButton sx={{ color: 'rgb(0, 0, 0)', display: { xs: 'flex', sm: 'none' } }}>
+          <IconButton sx={{ color: 'rgb(0, 0, 0)', display: { xs: 'flex', sm: 'none' } , '&:hover': { color: 'rgb(144, 151, 155)' } }}>
             <MenuIcon />
           </IconButton>
         </Toolbar>

@@ -6,9 +6,11 @@ import useUpdateItem from '../../hooks/useUpdateItem';
 import RemoveIcon from '@mui/icons-material/Remove';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next'
 
 export default function Cart() {
   const { data, isError, isLoading, error } = useCart();
+  const {t} = useTranslation();
   const navigate = useNavigate();
   const { mutate: removeItem, isPending: isPendingRemove } = useRemoveFromCart();
   const { mutate: updateItem, isPending: isPendingUpdate } = useUpdateItem();
@@ -30,101 +32,81 @@ export default function Cart() {
     <Container maxWidth={'lg'}>
       <Box display={{ xs: 'block', md: 'flex' }} gap={5} >
         <Box my={5} flex={2}>
-          <Typography fontWeight={'bold'} variant='h5' mb={3}>
-            Shopping Cart
-          </Typography>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>
-                    image
-                  </TableCell>
-                  <TableCell>
-                    productName
-                  </TableCell>
-                  <TableCell>
-                    count
-                  </TableCell>
-                  <TableCell>
-                    price
-                  </TableCell>
-                  <TableCell>
-                    total
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data.items.map(item => (
-                  <TableRow>
-                    <TableCell>
-                      {item.Image}
-                    </TableCell>
-                    <TableCell>
-                      {item.productName}
-                    </TableCell>
-                    <TableCell>
-                      <Box display={'flex'} alignItems={'center'}>
-                        <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '-')}>
-                          <RemoveIcon />
-                        </IconButton>
-                        <Typography>{item.count}</Typography>
-                        <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '+')}>
-                          <AddIcon />
-                        </IconButton>
-                      </Box>
-                    </TableCell>
-                    <TableCell>
-                      {item.price}
-                    </TableCell>
-                    <TableCell>
-                      {item.count * item.price}
-                    </TableCell>
-                    <TableCell>
-                      <Button color='error' variant='contained' disabled={isPendingRemove} onClick={() => removeItem(item.productId)}>Remove</Button>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
-        </Box>
+  <Typography fontWeight={'bold'} variant='h5' mb={3}>
+    {t('Shopping Cart')}
+  </Typography>
+  <TableContainer>
+    <Table>
+      <TableHead>
+        <TableRow>
+          <TableCell align='center'>{t('productName')}</TableCell>
+          <TableCell align='center'>{t('count')}</TableCell>
+          <TableCell align='center'>{t('price')}</TableCell>
+          <TableCell align='center'>{t('total')}</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        {data?.items?.map(item => (
+          <TableRow>
+            <TableCell align='center'>{item.productName}</TableCell>
+            <TableCell align='center'>
+              <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '-')}>
+                  <RemoveIcon />
+                </IconButton>
+                <Typography>{item.count}</Typography>
+                <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '+')}>
+                  <AddIcon />
+                </IconButton>
+              </Box>
+            </TableCell>
+            <TableCell align='center'>{item.price}</TableCell>
+            <TableCell align='center'>{item.count * item.price}</TableCell>
+            <TableCell align='center'>
+              <Button color='error' variant='contained' disabled={isPendingRemove} onClick={() => removeItem(item.productId)}>{t('Remove')}</Button>
+            </TableCell>
+          </TableRow>
+        ))}
+      </TableBody>
+    </Table>
+  </TableContainer>
+</Box>
         <Box my={5} flex={1} flexDirection={'column'} display={'flex'} gap={3}
           boxShadow={'0px 1px 3px rgb(206, 206, 206)'} borderRadius={2} p={4}>
           <Typography fontWeight={'bold'} variant='h5'>
-            Order Summary
+          {t('Order Summary')}
           </Typography>
           <form>
             <Box display={'flex'} flexDirection={'column'} gap={2} >
               <Box display={'flex'} flexDirection={'column'} gap={1}>
-                <Typography variant='body2'>Discount code / Promo code</Typography>
+                <Typography variant='body2'>{t('Discount code / Promo code')}</Typography>
                 <TextField fullWidth label="Card" variant="outlined" />
               </Box>
               <Box display={'flex'} flexDirection={'column'} gap={1}>
-                <Typography variant='body2'>Your bonus card number</Typography>
+                <Typography variant='body2'>{t('Your bonus card number')}</Typography>
                 <TextField fullWidth label="Enter Card Number" variant="outlined" />
               </Box>
             </Box>
           </form>
           <Box display={'flex'} flexDirection={'column'} gap={2}>
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-              <Typography component={'h2'} variant='h6'>Subtotal</Typography>
+              <Typography component={'h2'} variant='h6'>{t('Subtotal')}</Typography>
               <Typography variant='span'>$2347</Typography>
             </Box>
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-              <Typography component={'h2'} color='#545454' variant='body1'>Estimated Tax</Typography>
+              <Typography component={'h2'} color='#545454' variant='body1'>{t('Estimated Tax')}</Typography>
               <Typography variant='span'>$50</Typography>
             </Box>
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-              <Typography component={'h2'} color='#545454' variant='body1'>Estimated shipping & Handling</Typography>
+              <Typography component={'h2'} color='#545454' variant='body1'>{t('Estimated shipping & Handling')}</Typography>
               <Typography variant='span'>$29</Typography>
             </Box>
             <Box display={'flex'} justifyContent={'space-between'} alignItems={'center'}>
-              <Typography component={'h2'} variant='h6'>Total</Typography>
+              <Typography component={'h2'} variant='h6'>{t('Total')}</Typography>
               <Typography variant='span'>$2426</Typography>
             </Box>
           </Box>
-          <Button variant="contained" sx={{ backgroundColor: 'black' }} onClick={() => navigate('/checkout')}>Checkout</Button>
+          <Button variant="contained" sx={{ backgroundColor: 'black' }} onClick={() => navigate('/checkout')}>{t('Checkout')}</Button>
         </Box>
       </Box>
     </Container>

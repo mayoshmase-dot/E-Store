@@ -1,5 +1,4 @@
-import { QueryClientContext, useMutation, useQueryClient } from '@tanstack/react-query'
-import React from 'react'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import AuthAxiosInstance from '../api/AuthAxiosInstance'
 
 export default function useCheckout() {

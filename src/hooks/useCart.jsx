@@ -7,7 +7,7 @@ export default function useCart() {
         return response.data
     }
     const query = useQuery({
-        queryKey: ['cart'],
+        queryKey: ['cart' ],
         queryFn: getItem,
         staleTime: 100 * 60 * 5
     });
