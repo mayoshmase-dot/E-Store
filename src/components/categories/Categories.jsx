@@ -15,7 +15,7 @@ export default function Categories() {
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>{t('Browse By Category')}</Typography>
                 <Grid container spacing={5}>
                     {data.response.data.map((category) =>
-                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={category.id}>
                             <Card sx={{ py: 3, backgroundColor: 'rgba(205, 207, 207, 0.34)', textAlign: 'center' }}>
                                 <CardContent>
                                     <Typography component={'h3'} variant='body1' fontWeight={'bold'}>

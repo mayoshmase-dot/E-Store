@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { QueryClient, QueryClientProvider, } from '@tanstack/react-query'
 import { RouterProvider } from 'react-router-dom'
 import router from './router'
-import './i18next.js'
+import './i18n.js'
 import { useTranslation } from 'react-i18next'
 
 export default function App() {

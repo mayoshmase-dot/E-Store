@@ -8,14 +8,14 @@ import MenuIcon from '@mui/icons-material/Menu';
 import useAuthStore from '../../store/useAuthStore';
 import useCart from '../../hooks/useCart'
 import { useTranslation } from 'react-i18next';
-import i18n from "../../i18next.js";
+import i18n from "../../i18n.js";
 
 export default function Navbar() {
   const token = useAuthStore((state) => state.token)
   const logout = useAuthStore((state) => state.logout)
   const { t } = useTranslation();
   const changeLanguage = () => {
-    const newLng =i18n.language=="ar"?"en":"ar"
+    const newLng = i18n.language === "ar" ? "en" : "ar"
     i18n.changeLanguage(newLng);
   }
   const navigate = useNavigate()
@@ -55,7 +55,7 @@ export default function Navbar() {
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 2 }}>
 
-            <button onClick={changeLanguage('en')}>{i18n.language === "ar" ?"EN":"AR"}</button>
+            <button onClick={changeLanguage}>{i18n.language === "ar" ? "EN" : "AR"}</button>
 
             <IconButton sx={{ color: 'rgb(0, 0, 0)' }}>
               <FavoriteBorderIcon />
