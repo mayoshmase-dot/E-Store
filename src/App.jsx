@@ -5,8 +5,9 @@ import router from './router'
 import './i18n.js'
 import { useTranslation } from 'react-i18next'
 import { ThemeProvider } from '@emotion/react'
-import theme from './theme.js'
 import { CssBaseline } from '@mui/material'
+import getTheme from './theme.js'
+import useThemeStore from './store/useThemeStore.js'
 
 export default function App() {
 
@@ -16,11 +17,11 @@ export default function App() {
     document.documentElement.dir = dir;
   }, [i18n.language])
   const queryClient = new QueryClient()
-
+  const mode = useThemeStore((state) => state.mode)
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={getTheme(mode)}>
           <CssBaseline />
           <RouterProvider router={router} />
         </ThemeProvider>

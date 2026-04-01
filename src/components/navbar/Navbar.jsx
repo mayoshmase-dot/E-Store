@@ -12,6 +12,7 @@ import useAuthStore from '../../store/useAuthStore';
 import useCart from '../../hooks/useCart'
 import { useTranslation } from 'react-i18next';
 import i18n from "../../i18n.js";
+import useThemeStore from '../../store/useThemeStore.js';
 
 export default function Navbar() {
   const token = useAuthStore((state) => state.token)
@@ -26,6 +27,9 @@ export default function Navbar() {
     logout();
     navigate('/login');
   }
+  const mode = useThemeStore((state)=>state.mode)
+  const toggleTheme = useThemeStore((state)=>state.toggleTheme)
+
   const { data } = useCart()
   const cartCount = data?.items?.length || 0;
 
@@ -37,45 +41,47 @@ export default function Navbar() {
             {t('Store')}
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5 }}>
-            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark' ,'&:hover': { color: 'primary.main' } }}>{t('Home')}</Link>
-            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark','&:hover': { color: 'primary.main' } }}>{t('About')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }}>{t('Home')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }}>{t('About')}</Link>
             <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }}>{t('Contact Us')}</Link>
-            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark','&:hover': { color: 'primary.main' } }}>{t('Blog')}</Link>
+            <Link component={RouterLink} to={'/'} underline='none' sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }}>{t('Blog')}</Link>
 
           </Box>
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }}}>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
 
             <button onClick={changeLanguage}>{i18n.language === "ar" ? "EN" : "AR"}</button>
+            <button onClick={toggleTheme}>{mode === "light" ? "Dark" : "Light"}</button>
 
-            <IconButton sx={{ color: 'primary.main' , '&:hover': { color: 'secondary.dark' }}}>
+
+            <IconButton sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }}>
               <FavoriteBorderIcon />
             </IconButton>
             {token ?
               (
                 <>
                   <Badge badgeContent={cartCount} color="primary" >
-                      <IconButton component={RouterLink} to={'/cart'} sx={{ color: 'primary.main' , '&:hover': { color: 'secondary.dark' } }} ><ShoppingCartOutlinedIcon />
-                      </IconButton>
-                  </Badge>
-                    <IconButton component={'button'} onClick={handleLogout} underline='none' sx={{ color: 'primary.main' , '&:hover': { color: 'rgb(144, 151, 155)' } }}><LogoutIcon />
+                    <IconButton component={RouterLink} to={'/cart'} sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }} ><ShoppingCartOutlinedIcon />
                     </IconButton>
+                  </Badge>
+                  <IconButton component={'button'} onClick={handleLogout} underline='none' sx={{ color: 'primary.main', '&:hover': { color: 'rgb(144, 151, 155)' } }}><LogoutIcon />
+                  </IconButton>
                 </>
               ) :
               (
                 <>
-                  <IconButton component={RouterLink} to={'/login'} sx={{ color: 'primary.main' , '&:hover': { color: 'secondary.dark' } }}>
+                  <IconButton component={RouterLink} to={'/login'} sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }}>
                     <LoginIcon />
                   </IconButton>
-                    <IconButton component={RouterLink} to={'/register'}  sx={{ color: 'primary.main ' , '&:hover': { color: 'secondary.dark' } }}><PersonAddIcon />
+                  <IconButton component={RouterLink} to={'/register'} sx={{ color: 'primary.main ', '&:hover': { color: 'secondary.dark' } }}><PersonAddIcon />
                   </IconButton>
                 </>
               )
             }
-            <IconButton sx={{ color: 'primary.main' , '&:hover': { color: 'secondary.dark' } }} >
+            <IconButton sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }} >
               <PersonOutlineOutlinedIcon />
             </IconButton>
           </Box>
-          <IconButton sx={{ color: 'primary.main', display: { xs: 'flex', sm: 'none' } , '&:hover': { color: 'secondary.dark' } }}>
+          <IconButton sx={{ color: 'primary.main', display: { xs: 'flex', sm: 'none' }, '&:hover': { color: 'secondary.dark' } }}>
             <MenuIcon />
           </IconButton>
         </Toolbar>
