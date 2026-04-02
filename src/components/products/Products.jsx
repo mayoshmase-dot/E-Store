@@ -1,9 +1,10 @@
-import { Box, Container, Button, Grid, Link, Typography } from '@mui/material';
+import { Box, Container, Button, Grid, Link, Typography, IconButton } from '@mui/material';
 import useProducts from '../../hooks/useProducts'
 import Loader from '../../ui/loader/Loader';
 import Product from '../../ui/products/Products';
 import { Link as ReactLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function Products() {
     const { t } = useTranslation();
@@ -19,11 +20,15 @@ export default function Products() {
                 </Typography>
                 <Grid container spacing={5}>
                     {data.response.data.map((product) =>
-                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} bgcolor={'secondary.main'} key={product.id}>
+                        <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} position={'relative'} bgcolor={'secondary.main'} key={product.id}>
                             <Link component={ReactLink} to={`/product/${product.id}`} underline='none' >
                                 <Product product={product} />
                             </Link>
+                            <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: 'secondary.dark', '&:hover': { color: 'red' } }}>
+                                <FavoriteBorderIcon />
+                            </IconButton>
                         </Grid>)}
+
                 </Grid>
                 <Link component={ReactLink} to={'products'} underline='none' sx={{ display: 'flex', justifyContent: 'center', mt: 5, alignItems: 'center' }}>
                     <Button type='submit' sx={{ backgroundColor: 'primary.main', color: 'white', px: 3 }}>{t('Show More')}</Button></Link>
