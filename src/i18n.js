@@ -48,22 +48,25 @@ i18n
                     "Terms of use of the site": "Terms of use of the site",
                     "Add To Cart": "Add To Cart",
                     "Shopping Cart": "Shopping Cart",
-                    "productName": "productName" ,
+                    "productName": "productName",
                     "count": "count",
                     "price": "price",
                     "total": "total",
                     "Order Summary": "Order Summary",
                     "Discount code / Promo code": "Discount code / Promo code",
-                    "Your bonus card number":"Your bonus card number",
+                    "Your bonus card number": "Your bonus card number",
                     "Subtotal": "Subtotal",
                     "Estimated Tax": "Estimated Tax",
                     "Estimated shipping & Handling": "Estimated shipping & Handling",
                     "Total": "Total",
                     "Checkout": "Checkout",
-                    "Cash": "Cash" ,
-                    "Visa": "Visa" ,
+                    "Cash": "Cash",
+                    "Visa": "Visa",
                     "Pay Now": "Pay Now",
-                    "Remove": "Remove"
+                    "Remove": "Remove",
+                    "Popular Products": "Popular Products",
+                    "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.": "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.",
+
                 }
             },
             ar: {
@@ -118,12 +121,15 @@ i18n
                     "Subtotal": "المجموع الفرعي",
                     "Estimated Tax": "الضريبة المقدرة",
                     "Estimated shipping & Handling": "تكاليف الشحن والتوصيل التقديرية",
-                    "Total":"المجموع",
+                    "Total": "المجموع",
                     "Checkout": "الدفع",
                     "Cash": "نقدي",
                     "Visa": "فيزا",
                     "Pay Now": "ادفع الآن",
-                    "Remove": "حذف"
+                    "Remove": "حذف",
+                    "Popular Products": "المنتجات الشائعة",
+                    "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.": "يجمع جهاز iPad بين شاشة Retina رائعة مقاس 10.2 بوصة، وأداء مذهل، وتعدد المهام، وسهولة الاستخدام.",
+                    
 
                 }
             }
