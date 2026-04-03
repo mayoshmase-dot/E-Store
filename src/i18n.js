@@ -66,7 +66,22 @@ i18n
                     "Remove": "Remove",
                     "Popular Products": "Popular Products",
                     "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.": "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.",
-
+                    "Profile": "Profile",
+                    "Info": "Info",
+                    "Orders": "Orders",
+                    "Mode": "Mode",
+                    "Language": "Language",
+                    "Light Mode": "Light Mode",
+                    "Dark Mode": "Dark Mode",
+                    "Switch to dark mode": "Switch to dark mode",
+                    "Switch to light mode": "Switch to light mode",
+                    "FullName": "FullName",
+                    "Email": "Email",
+                    "Phone Number": "Phone Number",
+                    "ID": "ID",
+                    "Amount Paid": "Amount Paid",
+                    "Order Date": "Order Date",
+                    "status": "status",
                 }
             },
             ar: {
@@ -129,8 +144,22 @@ i18n
                     "Remove": "حذف",
                     "Popular Products": "المنتجات الشائعة",
                     "iPad combines a magnificent 10.2-inch Retina display, incredible performance, multitasking and ease of use.": "يجمع جهاز iPad بين شاشة Retina رائعة مقاس 10.2 بوصة، وأداء مذهل، وتعدد المهام، وسهولة الاستخدام.",
-                    
-
+                    "Profile": "الحساب",
+                    "Info": "معلومات الحساب",
+                    "Orders": "الطلبات",
+                    "Mode": "الوضع",
+                    "Language": "اللغة",
+                    "Light Mode": "الوضع المضيء",
+                    "Dark Mode": "الوضع المظلم",
+                    "Switch to dark mode": "التبديل الى الوضع المظلم",
+                    "Switch to light mode": "التبديل الى الوضع المضيء",
+                    "FullName": "الاسم الكامل",
+                    "Email": "الايميل",
+                    "Phone Number": "رقم الجوال",
+                    "ID": "الرقم التعريفي",
+                    "Amount Paid": "المبلغ المدفوع",
+                    "Order Date": "تاريخ الطلب",
+                    "status": "حالة الطلب",
                 }
             }
         },

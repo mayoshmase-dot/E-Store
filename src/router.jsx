@@ -8,6 +8,11 @@ import ProductsDetails from "./pages/products/ProductsDetails";
 import ProductPage from "./pages/products/ProductPage";
 import ProtectedRouter from "./ProtectedRouter";
 import Checkout from "./pages/checkout/Checkout";
+import Profile from "./pages/profile/Profile";
+import ProfileInfo from "./pages/profile/ProfileInfo";
+import ProfileOrders from "./pages/profile/ProfileOrders";
+import ProfileMode from "./pages/profile/ProfileMode";
+import ProfileLanguage from "./pages/profile/ProfileLanguage";
 
 const router = createBrowserRouter([
     {
@@ -31,6 +36,31 @@ const router = createBrowserRouter([
                     <ProtectedRouter>
                         <Checkout />
                     </ProtectedRouter>
+            },
+            {
+                path: 'profile',
+                element:
+                    <ProtectedRouter>
+                        <Profile />
+                    </ProtectedRouter>,
+                children: [
+                    {
+                        path: 'profileInfo',
+                        element: <ProfileInfo />
+                    },
+                    {
+                        path: 'orders',
+                        element: <ProfileOrders />
+                    },
+                    {
+                        path:'mode',
+                        element:<ProfileMode />
+                    },
+                    {
+                        path:'language',
+                        element:<ProfileLanguage />
+                    }
+                ]
             },
             {
                 path: 'product/:id',

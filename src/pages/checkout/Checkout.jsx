@@ -24,25 +24,25 @@ export default function Checkout() {
               <TableRow>
                 <TableCell align='center'>
                   {t('productName')}
-                  </TableCell>
+                </TableCell>
                 <TableCell align='center'>
                   {t('count')}
-                  </TableCell>
+                </TableCell>
                 <TableCell align='center'>
                   {t('total')}
-                  </TableCell>
+                </TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {data?.items?.map(item => (
                 <TableRow>
-                  <TableCell  align='center'> 
+                  <TableCell align='center'>
                     {item.productName}
                   </TableCell>
-                  <TableCell  align='center'>
-                    <Typography>{item.count}</Typography>
+                  <TableCell align='center'>
+                    {item.count}
                   </TableCell>
-                  <TableCell  align='center'>
+                  <TableCell align='center'>
                     {item.count * item.price}
                   </TableCell>
                 </TableRow>

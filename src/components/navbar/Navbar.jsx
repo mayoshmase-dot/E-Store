@@ -1,7 +1,7 @@
 import { AppBar, Box, Toolbar, Typography, IconButton, Badge } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
@@ -12,24 +12,16 @@ import useAuthStore from '../../store/useAuthStore';
 import useCart from '../../hooks/useCart'
 import { useTranslation } from 'react-i18next';
 import i18n from "../../i18n.js";
-import useThemeStore from '../../store/useThemeStore.js';
 
 export default function Navbar() {
   const token = useAuthStore((state) => state.token)
   const logout = useAuthStore((state) => state.logout)
   const { t } = useTranslation();
-  const changeLanguage = () => {
-    const newLng = i18n.language === "ar" ? "en" : "ar"
-    i18n.changeLanguage(newLng);
-  }
   const navigate = useNavigate()
   const handleLogout = () => {
     logout();
     navigate('/login');
   }
-  const mode = useThemeStore((state)=>state.mode)
-  const toggleTheme = useThemeStore((state)=>state.toggleTheme)
-
   const { data } = useCart()
   const cartCount = data?.items?.length || 0;
 
@@ -48,11 +40,6 @@ export default function Navbar() {
 
           </Box>
           <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-
-            <button onClick={changeLanguage}>{i18n.language === "ar" ? "EN" : "AR"}</button>
-            <button onClick={toggleTheme}>{mode === "light" ? "Dark" : "Light"}</button>
-
-
             <IconButton sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }}>
               <FavoriteBorderIcon />
             </IconButton>
@@ -63,7 +50,10 @@ export default function Navbar() {
                     <IconButton component={RouterLink} to={'/cart'} sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }} ><ShoppingCartOutlinedIcon />
                     </IconButton>
                   </Badge>
-                  <IconButton component={'button'} onClick={handleLogout} underline='none' sx={{ color: 'primary.main', '&:hover': { color: 'rgb(144, 151, 155)' } }}><LogoutIcon />
+                  <IconButton component={RouterLink} onClick={handleLogout} underline='none' sx={{ color: 'primary.main', '&:hover': { color: 'rgb(144, 151, 155)' } }}><LogoutIcon />
+                  </IconButton>
+                  <IconButton component={RouterLink} to={'/profile'} sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }} >
+                    <AccountCircleIcon />
                   </IconButton>
                 </>
               ) :
@@ -72,14 +62,11 @@ export default function Navbar() {
                   <IconButton component={RouterLink} to={'/login'} sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }}>
                     <LoginIcon />
                   </IconButton>
-                  <IconButton component={RouterLink} to={'/register'} sx={{ color: 'primary.main ', '&:hover': { color: 'secondary.dark' } }}><PersonAddIcon />
+                  <IconButton component={RouterLink} to={'/register'} sx={{ color:'primary.main', '&:hover': { color: 'secondary.dark' } }}><PersonAddIcon />
                   </IconButton>
                 </>
               )
             }
-            <IconButton sx={{ color: 'primary.main', '&:hover': { color: 'secondary.dark' } }} >
-              <PersonOutlineOutlinedIcon />
-            </IconButton>
           </Box>
           <IconButton sx={{ color: 'primary.main', display: { xs: 'flex', sm: 'none' }, '&:hover': { color: 'secondary.dark' } }}>
             <MenuIcon />
