@@ -3,16 +3,16 @@ import axiosInstance from '../api/axiosInstance'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-export default function useForgotPassword() {
+export default function useResetPassword() {
     const navigate = useNavigate()
     return useMutation({
-        mutationFn: async (email) => {
-            const response = await axiosInstance.post('/auth/Account/SendCode', { email })
+        mutationFn: async (data) => {
+            const response = await axiosInstance.patch('/auth/Account/ResetPassword', data)
             return response.data
         },
-        onSuccess: (data, email) => {
-            toast.success('Code sent successfully!', {
-                onClose: () => navigate('/verifyCode', { state: { email } })
+        onSuccess: () => {
+            toast.success('Password reset successfully!', {
+                onClose: () => navigate('/login')
             })
         },
         onError: (error) => {

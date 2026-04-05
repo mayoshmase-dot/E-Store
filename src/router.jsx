@@ -15,6 +15,7 @@ import ProfileMode from "./pages/profile/ProfileMode";
 import ProfileLanguage from "./pages/profile/ProfileLanguage";
 import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
 import VerifyCode from "./pages/auth/code/VerifyCode";
+import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
 
 const router = createBrowserRouter([
     {
@@ -87,6 +88,10 @@ const router = createBrowserRouter([
             {
                 path: 'verifyCode',
                 element: <VerifyCode />
+            },
+            {
+                path: 'resetPassword',
+                element: <ResetPassword />
             },
 
         ]

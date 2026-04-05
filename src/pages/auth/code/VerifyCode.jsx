@@ -1,12 +1,13 @@
 import { Box, Button, Container, TextField, Typography, Alert } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function VerifyCode() {
     const navigate = useNavigate()
     const [code, setCode] = useState('')
-
+    const location = useLocation()
+    const email = location.state?.email
     return (
         <Container maxWidth="sm">
             <Box display="flex" justifyContent="center" alignItems="center" mt={5}>
@@ -26,7 +27,7 @@ export default function VerifyCode() {
                             onChange={(e) => setCode(e.target.value)}
                         />
                         <Button variant="contained" sx={{ py: 2, borderRadius: 2 }}
-                            onClick={() => navigate('/resetPassword', { state: { code } })}>
+                            onClick={() => navigate('/resetPassword', { state: { code , email } })}>
                             Verify Code
                         </Button>
                         <Button variant="text" sx={{ color: 'secondary.dark' }}
