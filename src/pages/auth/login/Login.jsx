@@ -7,8 +7,8 @@ import axiosInstance from '../../../api/axiosInstance';
 import useAuthStore from '../../../store/useAuthStore';
 
 export default function Login() {
- const setToken = useAuthStore ((state)=>state.setToken)
- const navigate = useNavigate();
+  const setToken = useAuthStore((state) => state.setToken)
+  const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(LoginSchema)
   });
@@ -47,8 +47,10 @@ export default function Login() {
               <Checkbox />Remember me
             </Grid>
             <Grid item size={{ xs: '{ 12}', sm: '{ 6}', md: '{4}', lg: '{3}' }}>
-              Forgot password?
-            </Grid>
+              <Button variant={'text'} onClick={() => navigate('/forgotPassword')}>
+                Forgot password?
+              </Button>  
+              </Grid>
           </Grid>
           <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }}>Login</Button>
 

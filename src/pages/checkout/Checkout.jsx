@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next'
 
 export default function Checkout() {
   const { data, isLoading, isError, error } = useCart()
-  const [paymentMethod, setPaymentMethod] = useState('Ccash');
+  const [paymentMethod, setPaymentMethod] = useState('cash');
   const { mutate: checkout, isPending } = useCheckout();
   const { t } = useTranslation();
   if (isLoading) return <Loader />

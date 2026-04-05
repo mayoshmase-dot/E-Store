@@ -13,6 +13,8 @@ import ProfileInfo from "./pages/profile/ProfileInfo";
 import ProfileOrders from "./pages/profile/ProfileOrders";
 import ProfileMode from "./pages/profile/ProfileMode";
 import ProfileLanguage from "./pages/profile/ProfileLanguage";
+import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
+import VerifyCode from "./pages/auth/code/VerifyCode";
 
 const router = createBrowserRouter([
     {
@@ -77,7 +79,15 @@ const router = createBrowserRouter([
             {
                 path: 'login',
                 element: <Login />
-            }
+            },
+            {
+                path: 'forgotPassword',
+                element: <ForgotPassword />
+            },
+            {
+                path: 'verifyCode',
+                element: <VerifyCode />
+            },
 
         ]
     }
