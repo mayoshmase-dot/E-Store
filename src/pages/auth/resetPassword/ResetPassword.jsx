@@ -1,22 +1,17 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from 'react-toastify';
 import useResetPassword from "../../../hooks/useResetPassword";
 
 export default function ResetPassword() {
     const navigate = useNavigate()
-    const location = useLocation()
-    const email = location.state?.email
-    const code = location.state?.code
-
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const { mutate: resetPassword, isPending } = useResetPassword()
 
     const handleReset = () => {
-        console.log({ email, code, newPassword }) // ← أضف هاي
         if (!newPassword || !confirmPassword) {
             toast.error('Please fill all fields')
             return

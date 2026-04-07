@@ -8,6 +8,7 @@ export default function Categories() {
     const { t } = useTranslation();
     const { data, isLoading, isError, error } = useCategories();
     const navigate = useNavigate()
+    
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
@@ -18,7 +19,7 @@ export default function Categories() {
                 <Grid container spacing={5}>
                     {data.response.data.map((category) =>
                         <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} key={category.id}>
-                            <Card onClick={() => navigate(`/category/${category.id}`,{ state: { name: category.name } })}
+                            <Card onClick={() => navigate(`/category/${category.id}`)}
                                 sx={{ py: 3, backgroundColor: 'secondary.main', textAlign: 'center', cursor: 'pointer' }}>
                                 <CardContent>
                                     <Typography component={'h3'} variant='body1' fontWeight={'bold'}>

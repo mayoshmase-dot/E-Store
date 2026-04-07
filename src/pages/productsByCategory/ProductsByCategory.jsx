@@ -9,8 +9,6 @@ export default function ProductsByCategory() {
     const { t } = useTranslation();
     const { id } = useParams()
     const { data, isLoading, isError, error } = useProductsByCategory(id)
-    const location = useLocation()
-    const name = location.state.name
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
@@ -18,7 +16,7 @@ export default function ProductsByCategory() {
         <Container maxWidth={'md'}>
             <Box py={5}>
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
-                    {t('Products')} {t('by')} {name}
+                    {t('Products')} {t('by')}
                 </Typography>
                 <Grid container spacing={3}>
                     {data.response.map((product) =>

@@ -1,13 +1,11 @@
 import { Box, Button, Container, TextField, Typography, Alert } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function VerifyCode() {
     const navigate = useNavigate()
     const [code, setCode] = useState('')
-    const location = useLocation()
-    const email = location.state?.email
     return (
         <Container maxWidth="sm">
             <Box display="flex" justifyContent="center" alignItems="center" mt={5}>
