@@ -82,6 +82,7 @@ i18n
                     "Amount Paid": "Amount Paid",
                     "Order Date": "Order Date",
                     "status": "status",
+                    "by": "by"
                 }
             },
             ar: {
@@ -160,6 +161,7 @@ i18n
                     "Amount Paid": "المبلغ المدفوع",
                     "Order Date": "تاريخ الطلب",
                     "status": "حالة الطلب",
+                    "by":"حسب"
                 }
             }
         },

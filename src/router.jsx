@@ -16,6 +16,7 @@ import ProfileLanguage from "./pages/profile/ProfileLanguage";
 import ForgotPassword from "./pages/auth/forgotPassword/ForgotPassword";
 import VerifyCode from "./pages/auth/code/VerifyCode";
 import ResetPassword from "./pages/auth/resetPassword/ResetPassword";
+import ProductsByCategory from "./pages/productsByCategory/ProductsByCategory";
 
 const router = createBrowserRouter([
     {
@@ -92,6 +93,11 @@ const router = createBrowserRouter([
             {
                 path: 'resetPassword',
                 element: <ResetPassword />
+            },
+            {
+                
+                path: 'category/:id',
+                element: <ProductsByCategory />
             },
 
         ]

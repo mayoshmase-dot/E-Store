@@ -1,10 +1,10 @@
-import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material'
+import { Card, CardContent, CardMedia, Typography } from '@mui/material'
 
 export default function Products({ product }) {
     return (
-        <Card sx={{ backgroundColor: 'rgba(205, 207, 207, 0.34)', textAlign: 'center' }}>
-            <CardMedia component={'img'} image={product.image}></CardMedia>
-            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 3 }}>
+        <Card sx={{ backgroundColor: 'secondary.main', textAlign: 'center', height: '100%', display: 'flex', flexDirection: 'column' }}>
+            <CardMedia component={'img'} image={product.image} sx={{ height: 300, objectFit: 'cover' }} />
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', gap: 2, p: 2, flexGrow: 1 }}>
                 <Typography component={'h3'} variant='body1'>
                     {product.name}
                 </Typography>

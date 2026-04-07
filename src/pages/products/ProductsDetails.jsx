@@ -6,7 +6,7 @@ import useAddCart from '../../hooks/useAddCart';
 import { useTranslation } from 'react-i18next';
 
 export default function ProductsDetails() {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     const { id } = useParams();
     const { data, isLoading, isError, error } = useProductDetails({ id });
     const { mutate, isPending } = useAddCart();
