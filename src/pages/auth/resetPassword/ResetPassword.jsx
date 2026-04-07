@@ -39,12 +39,12 @@ export default function ResetPassword() {
                     <Box display="flex" flexDirection="column" gap={3}>
                         <TextField
                             fullWidth label="Email" variant="outlined" type="email"
-                            value={email}
+                            
                             disabled
                         />
                         <TextField
                             fullWidth label="Verification Code" variant="outlined"
-                            value={code}
+                            
                             disabled
                         />
                         <TextField
