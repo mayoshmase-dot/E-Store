@@ -1,4 +1,4 @@
-import { AppBar, Box, Toolbar, Typography, IconButton, Badge, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider } from '@mui/material';
+import { AppBar, Box, Toolbar, Typography, IconButton, Badge, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Link } from '@mui/material';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -36,11 +36,11 @@ export default function Navbar() {
             {t('Store')}
           </Typography>
 
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5 }}>
-            <RouterLink to='/' style={{ color: 'inherit', textDecoration: 'none' }}>{t('Home')}</RouterLink>
-            <RouterLink to='/' style={{ color: 'inherit', textDecoration: 'none' }}>{t('About')}</RouterLink>
-            <RouterLink to='/' style={{ color: 'inherit', textDecoration: 'none' }}>{t('Contact Us')}</RouterLink>
-            <RouterLink to='/' style={{ color: 'inherit', textDecoration: 'none' }}>{t('Blog')}</RouterLink>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5  }}>
+            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none' to='/' >{t('Home')}</Link>
+            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none' >{t('About')}</Link>
+            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none'>{t('Contact Us')}</Link>
+            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none'>{t('Blog')}</Link>
           </Box>
 
           <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
