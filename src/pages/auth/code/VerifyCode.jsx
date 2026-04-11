@@ -25,7 +25,10 @@ export default function VerifyCode() {
                             onChange={(e) => setCode(e.target.value)}
                         />
                         <Button variant="contained" sx={{ py: 2, borderRadius: 2 }}
-                            onClick={() => navigate('/resetPassword')}>
+                            onClick={() => {
+                                localStorage.setItem('code', code)
+                                navigate('/resetPassword')
+                            }}>
                             Verify Code
                         </Button>
                         <Button variant="text" sx={{ color: 'secondary.dark' }}

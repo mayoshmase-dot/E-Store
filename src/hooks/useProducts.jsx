@@ -8,7 +8,7 @@ export default function useProducts(limit=3) {
         return response.data;
     }
     const query = useQuery({
-        queryKey: ['products', i18n.language , limit],
+        queryKey: ['products', limit],
         queryFn: getProducts,
     })
     return query

@@ -6,20 +6,21 @@ import useAddCart from '../../hooks/useAddCart';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import useAddReview from '../../hooks/useAddReview';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ProductReviews from '../../components/review/ProductReviews';
+import CreateReviews from '../../components/review/CreateReviews';
 
 export default function ProductsDetails() {
     const { t } = useTranslation();
     const { id } = useParams();
     const { data, isLoading, isError, error } = useProductDetails({ id });
     const { mutate, isPending } = useAddCart();
-    const { mutate: addReview, isPending: isReviewPending } = useAddReview(id);
-    const [rating, setRating] = useState(0)
-    const [comment, setComment] = useState('')
-
 
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
     const product = data.response;
+   
 
     return (
         <Container maxWidth={'lg'}>
@@ -27,11 +28,8 @@ export default function ProductsDetails() {
                 <Grid container spacing={6}>
                     <Grid item size={{ xs: 12, md: 6 }}>
                         <Card sx={{ borderRadius: 4, backgroundColor: 'secondary.main', p: 3, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                            <CardMedia
-                                component={'img'}
-                                image={product.image}
-                                sx={{ width: '100%', maxHeight: 380, objectFit: 'contain' }}
-                            />
+                            <CardMedia component={'img'} image={product.image}
+                                sx={{ width: '100%', maxHeight: 380, objectFit: 'contain' }} />
                         </Card>
                     </Grid>
                     <Grid item size={{ xs: 12, md: 6 }} display={'flex'} alignItems={'center'}>
@@ -63,43 +61,9 @@ export default function ProductsDetails() {
                 </Grid>
             </Box>
 
-            <Box mt={6} p={4} sx={{ backgroundColor: 'secondary.main', borderRadius: 4 }}>
-                <Typography variant='h5' fontWeight={'bold'} mb={1}>
-                    {t('Add Review')}
-                </Typography>
-                <Typography variant='body2' color={'secondary.dark'} mb={3}>
-                    {t('Share your experience with this product')}
-                </Typography>
-
-                <Box display={'flex'} flexDirection={'column'} gap={3}>
-                    <Box>
-                        <Typography variant='body2' fontWeight={'bold'} mb={1}>
-                            {t('Your Rating')}
-                        </Typography>
-                        <Rating
-                            size='large'
-                            value={rating}
-                            onChange={(e, newValue) => setRating(newValue)}
-                        />
-                    </Box>
-
-                    <TextField
-                        fullWidth multiline rows={3}
-                        label={t('Your Comment')}
-                        value={comment}
-                        onChange={(e) => setComment(e.target.value)}
-                        sx={{ backgroundColor: 'secondary.main', borderRadius: 2 }}
-                    />
-
-                    <Button
-                        variant='contained'
-                        disabled={isReviewPending}
-                        onClick={() => addReview({ Rating: rating, Comment: comment })}
-                        sx={{ width: 'fit-content', px: 5, py: 1.5, borderRadius: 2 }}>
-                        Submitting
-                    </Button>
-                </Box>
-            </Box>
+          
+<CreateReviews />
+       <ProductReviews reviews={product.reviews} />
         </Container>
     )
 }

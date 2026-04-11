@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import axiosInstance from '../api/axiosInstance'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 export default function useForgotPassword() {
     const navigate = useNavigate()
@@ -11,12 +11,19 @@ export default function useForgotPassword() {
             return response.data
         },
         onSuccess: (data, email) => {
-            toast.success('Code sent successfully!', {
-                onClose: () => navigate('/verifyCode', { state: { email } })
-            })
+            localStorage.setItem('email', email)
+            Swal.fire({
+                title: 'Success!',
+                text: 'Code sent successfully!',
+                icon: 'success'
+            }).then(() => navigate('/verifyCode'))
         },
         onError: (error) => {
-            toast.error(error.response?.data?.message || 'Something went wrong')
+            Swal.fire({
+                title: 'Error!',
+                text: error.response?.data?.message || 'Something went wrong',
+                icon: 'error'
+            })
         }
     })
 }

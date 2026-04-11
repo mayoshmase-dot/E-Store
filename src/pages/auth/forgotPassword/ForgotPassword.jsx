@@ -23,10 +23,8 @@ export default function ForgotPassword() {
                         </Typography>
                     </Box>
                     <Box display="flex" flexDirection="column" gap={3}>
-                        <TextField
-                            fullWidth label="Email Address" variant="outlined" type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
+                        <TextField fullWidth label="Email Address" variant="outlined" type="email"
+                            value={email} onChange={(e) => setEmail(e.target.value)}
                         />
                         <Button variant="contained" sx={{ py: 2, borderRadius: 2 }} disabled={isPending} onClick={() => sendCode(email)}>
                             Send Reset Link

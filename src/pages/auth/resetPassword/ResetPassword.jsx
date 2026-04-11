@@ -2,22 +2,24 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from 'react-toastify';
 import useResetPassword from "../../../hooks/useResetPassword";
+import Swal from "sweetalert2";
 
 export default function ResetPassword() {
     const navigate = useNavigate()
+    const email = localStorage.getItem('email')
+    const code = localStorage.getItem('code')
     const [newPassword, setNewPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const { mutate: resetPassword, isPending } = useResetPassword()
 
     const handleReset = () => {
         if (!newPassword || !confirmPassword) {
-            toast.error('Please fill all fields')
+            Swal.fire({ title: 'Error!', text: 'Please fill all fields', icon: 'error' })
             return
         }
         if (newPassword !== confirmPassword) {
-            toast.error('Passwords do not match')
+            Swal.fire({ title: 'Error!', text: 'Passwords do not match', icon: 'error' })
             return
         }
         resetPassword({ email, code, newPassword })
@@ -39,12 +41,12 @@ export default function ResetPassword() {
                     <Box display="flex" flexDirection="column" gap={3}>
                         <TextField
                             fullWidth label="Email" variant="outlined" type="email"
-                            
+                            value={email}
                             disabled
                         />
                         <TextField
                             fullWidth label="Verification Code" variant="outlined"
-                            
+                            value={code}
                             disabled
                         />
                         <TextField

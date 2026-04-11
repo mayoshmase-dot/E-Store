@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query'
 import axiosInstance from '../api/axiosInstance'
 import { useNavigate } from 'react-router-dom'
-import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 export default function useResetPassword() {
     const navigate = useNavigate()
@@ -11,12 +11,30 @@ export default function useResetPassword() {
             return response.data
         },
         onSuccess: () => {
-            toast.success('Password reset successfully!', {
-                onClose: () => navigate('/login')
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You are about to reset your password!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, reset it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Done!',
+                        text: 'Password reset successfully!',
+                        icon: 'success'
+                    }).then(() => navigate('/login'))
+                }
             })
         },
         onError: (error) => {
-            toast.error(error.response?.data?.message || 'Something went wrong')
+            Swal.fire({
+                title: 'Error!',
+                text: error.response?.data?.message || 'Something went wrong',
+                icon: 'error'
+            })
         }
     })
 }

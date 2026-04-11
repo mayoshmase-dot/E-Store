@@ -47,10 +47,10 @@ export default function Login() {
               <Checkbox />Remember me
             </Grid>
             <Grid item size={{ xs: '{ 12}', sm: '{ 6}', md: '{4}', lg: '{3}' }}>
-              <Button variant={'text'} onClick={() => navigate('/forgotPassword')}>
+              <Typography sx={{cursor:'pointer'}} variant={'p'} onClick={() => navigate('/forgotPassword')}>
                 Forgot password?
-              </Button>  
-              </Grid>
+              </Typography>
+            </Grid>
           </Grid>
           <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }}>Login</Button>
 

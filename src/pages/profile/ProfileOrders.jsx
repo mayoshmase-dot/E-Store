@@ -6,6 +6,7 @@ import Loader from '../../ui/loader/Loader';
 export default function ProfileOrders() {
     const { t } = useTranslation();
     const { data, isError, isLoading, error } = useProfile();
+    console.log(data)
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
     return (
