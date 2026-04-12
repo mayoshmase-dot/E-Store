@@ -9,15 +9,18 @@ import { Link as ReactLink } from "react-router-dom";
 export default function ProductPage() {
     const { t } = useTranslation();
     const [search, setSearch] = useState('')
-    const [page, setPage] = useState("")
+    const [page, setPage] = useState(1)
     const [minPrice, setMinPrice] = useState('')
     const [maxPrice, setMaxPrice] = useState('')
     const [sortBy, setSortBy] = useState('Price')
     const [ascending, setAscending] = useState(false)
     const [appliedFilters, setAppliedFilters] = useState({ search: '', minPrice: '', maxPrice: '', sortBy: 'Price', ascending: false })
+    const { data, isError, isLoading, error } = useProducts({
+        limit: 5, search: appliedFilters.search,
+        minPrice: appliedFilters.minPrice, maxPrice: appliedFilters.maxPrice,
+        sortBy: appliedFilters.sortBy, ascending: appliedFilters.ascending, page
+    })
 
-    const { data, isError, isLoading, error } = useProducts({ limit: 5, appliedFilters, page })
-console.log(data)
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
@@ -86,7 +89,10 @@ console.log(data)
                         </Grid>
 
                         <Box display={'flex'} justifyContent={'center'} mt={4}>
-                            <Pagination shape="rounded" count={page}
+                            <Pagination
+                                shape="rounded"
+                                count={page}
+                                page={page}
                                 onChange={(e, value) => setPage(value)}
                                 color="primary"
                             />
