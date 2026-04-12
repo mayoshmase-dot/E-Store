@@ -5,7 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import { useTranslation } from 'react-i18next';
 export default function Footer() {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Box bgcolor={'primary.main'} color={'white'}>

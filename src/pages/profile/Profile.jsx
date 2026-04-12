@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 export default function Profile() {
     const {t} = useTranslation();
     return (
-        <Box display={'flex'} gap={3} mb={5}>
+        <Box display={'flex'} gap={3} pb={5}>
             <Box sx={{ width: 250, flexShrink: 0 }}>
                 <Typography variant='h6' textAlign={'center'} fontWeight={'bold'} my={2}>
                     {t('Profile')}

@@ -18,7 +18,7 @@ export default function Checkout() {
 
   return (
     <Container maxWidth={'sm'}>
-      <Box my={5}>
+      <Box py={5}>
         <Typography fontWeight={'bold'} variant='h5' mb={3}>
           {t('Checkout')}
         </Typography>

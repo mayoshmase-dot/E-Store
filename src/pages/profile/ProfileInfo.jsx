@@ -13,7 +13,7 @@ export default function ProfileInfo() {
     if (isError) return <Box color={'red'}>{error.message}</Box>
 
     return (
-        <Box my={5}>
+        <Box py={5}>
                 <Box sx={{ bgcolor: 'primary.main', p: 5, display: 'flex', flexDirection: 'column',borderRadius:3, alignItems: 'center', gap: 2 }}>
                     <Avatar sx={{ width: 90, height: 90, bgcolor: 'white', color: 'primary.main', fontSize: 40 }}>
                         {data.fullName?.charAt(0).toUpperCase()}

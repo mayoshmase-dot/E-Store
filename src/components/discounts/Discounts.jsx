@@ -9,7 +9,7 @@ export default function Discounts() {
     const {t} = useTranslation();
     return (
         <Container maxWidth={'lg'}>
-            <Box >
+            <Box pb={5} >
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                     {t('Discounts up to -50%')}
                 </Typography>

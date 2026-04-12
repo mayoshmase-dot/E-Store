@@ -14,7 +14,7 @@ export default function Categories() {
 
     return (
         <Container maxWidth={'lg'} >
-            <Box my={5}>
+            <Box py={5}>
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>{t('Browse By Category')}</Typography>
                 <Grid container spacing={5}>
                     {data.response.data.map((category) =>

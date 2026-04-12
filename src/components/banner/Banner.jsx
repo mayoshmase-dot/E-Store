@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next"
 export default function Banner() {
     const { t } = useTranslation();
     return (
-        <Box mt={5}>
+        <Box>
             <Box position="relative">
                 <CardMedia component="img" image={banner} sx={{ width: "100%", objectFit: "cover", height: { xs: 200, sm: 300, md: "auto" } }} />
 

@@ -31,48 +31,48 @@ export default function Cart() {
   return (
     <Container maxWidth={'lg'}>
       <Box display={{ xs: 'primary.main', md: 'flex' }} gap={5} >
-        <Box my={5} flex={2}>
+        <Box py={5} flex={2}>
           <Typography fontWeight={'bold'} variant='h5' mb={3}>
             {t('Shopping Cart')}
           </Typography>
           <Paper variant='outlined' sx={{ mb: 3, borderRadius: 2, overflow: 'hidden' }}>
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow  sx={{ backgroundColor: 'primary.main'}}>
-                  <TableCell align='center' sx={{ color: 'white'}}>{t('productName')}</TableCell>
-                  <TableCell align='center' sx={{ color: 'white'}}>{t('count')}</TableCell>
-                  <TableCell align='center' sx={{ color: 'white'}}>{t('price')}</TableCell>
-                  <TableCell align='center' sx={{ color: 'white'}}>{t('total')}</TableCell>
-                  <TableCell align='center' sx={{ color: 'white'}}>{t('action')}</TableCell>
+            <TableContainer>
+              <Table>
+                <TableHead>
+                  <TableRow sx={{ backgroundColor: 'primary.main' }}>
+                    <TableCell align='center' sx={{ color: 'white' }}>{t('productName')}</TableCell>
+                    <TableCell align='center' sx={{ color: 'white' }}>{t('count')}</TableCell>
+                    <TableCell align='center' sx={{ color: 'white' }}>{t('price')}</TableCell>
+                    <TableCell align='center' sx={{ color: 'white' }}>{t('total')}</TableCell>
+                    <TableCell align='center' sx={{ color: 'white' }}>{t('action')}</TableCell>
 
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.items?.map(item => (
-                  <TableRow  sx={{ backgroundColor: 'secondary.main'}}>
-                    <TableCell align='center'>{item.productName}</TableCell>
-                    <TableCell align='center'>
-                      <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
-                        <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '-')}>
-                          <RemoveIcon />
-                        </IconButton>
-                        <Typography>{item.count}</Typography>
-                        <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '+')}>
-                          <AddIcon />
-                        </IconButton>
-                      </Box>
-                    </TableCell>
-                    <TableCell align='center'>{item.price}</TableCell>
-                    <TableCell align='center'>{item.count * item.price}</TableCell>
-                    <TableCell align='center'>
-                      <Button color='error' variant='contained' disabled={isPendingRemove} onClick={() => removeItem(item.productId)}>{t('Remove')}</Button>
-                    </TableCell>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-          </TableContainer>
+                </TableHead>
+                <TableBody>
+                  {data?.items?.map(item => (
+                    <TableRow sx={{ backgroundColor: 'secondary.main' }}>
+                      <TableCell align='center'>{item.productName}</TableCell>
+                      <TableCell align='center'>
+                        <Box display={'flex'} alignItems={'center'} justifyContent={'center'}>
+                          <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '-')}>
+                            <RemoveIcon />
+                          </IconButton>
+                          <Typography>{item.count}</Typography>
+                          <IconButton size={'small'} disabled={isPendingUpdate} onClick={() => handleUpdateQty(item.productId, '+')}>
+                            <AddIcon />
+                          </IconButton>
+                        </Box>
+                      </TableCell>
+                      <TableCell align='center'>{item.price}</TableCell>
+                      <TableCell align='center'>{item.count * item.price}</TableCell>
+                      <TableCell align='center'>
+                        <Button color='error' variant='contained' disabled={isPendingRemove} onClick={() => removeItem(item.productId)}>{t('Remove')}</Button>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Paper>
         </Box>
         <Box my={5} flex={1} flexDirection={'column'} display={'flex'} gap={3}

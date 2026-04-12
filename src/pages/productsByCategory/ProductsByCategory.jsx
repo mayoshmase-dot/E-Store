@@ -9,6 +9,7 @@ export default function ProductsByCategory() {
     const { t } = useTranslation();
     const { id } = useParams()
     const { data, isLoading, isError, error } = useProductsByCategory(id)
+
     const name = localStorage.getItem('name')
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>

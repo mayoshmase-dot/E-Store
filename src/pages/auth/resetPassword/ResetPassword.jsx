@@ -4,9 +4,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useResetPassword from "../../../hooks/useResetPassword";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 export default function ResetPassword() {
     const navigate = useNavigate()
+    const { t } = useTranslation();
     const email = localStorage.getItem('email')
     const code = localStorage.getItem('code')
     const [newPassword, setNewPassword] = useState('')
@@ -27,46 +29,46 @@ export default function ResetPassword() {
 
     return (
         <Container maxWidth="sm">
-            <Box display="flex" justifyContent="center" alignItems="center" mt={5}>
+            <Box display="flex" justifyContent="center" alignItems="center" pt={5}>
                 <Box sx={{ p: 5, borderRadius: 4, width: '100%' }}>
                     <Box display="flex" flexDirection="column" alignItems="center" gap={2} mb={4}>
                         <Box sx={{ bgcolor: 'primary.main', borderRadius: '50%', p: 2, display: 'flex' }}>
                             <LockOutlinedIcon sx={{ color: 'white', fontSize: 40 }} />
                         </Box>
-                        <Typography variant="h5" fontWeight="bold">Reset Password</Typography>
+                        <Typography variant="h5" fontWeight="bold">{t("Reset Password")}</Typography>
                         <Typography variant="body2" color="secondary.dark" textAlign="center">
-                            Enter your new password below.
+                            {t("Enter your new password below.")}
                         </Typography>
                     </Box>
                     <Box display="flex" flexDirection="column" gap={3}>
                         <TextField
-                            fullWidth label="Email" variant="outlined" type="email"
+                            fullWidth label={t("Email")} variant="outlined" type="email"
                             value={email}
                             disabled
                         />
                         <TextField
-                            fullWidth label="Verification Code" variant="outlined"
+                            fullWidth label={t("Verification Code")} variant="outlined"
                             value={code}
                             disabled
                         />
                         <TextField
-                            fullWidth label="New Password" variant="outlined" type="password"
+                            fullWidth label={t("New Password")} variant="outlined" type="password"
                             value={newPassword}
                             onChange={(e) => setNewPassword(e.target.value)}
                         />
                         <TextField
-                            fullWidth label="Confirm Password" variant="outlined" type="password"
+                            fullWidth label={t('Confirm Password')} variant="outlined" type="password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                         />
                         <Button variant="contained" sx={{ py: 2, borderRadius: 2 }}
                             disabled={isPending}
                             onClick={handleReset}>
-                            Reset Password
+                            {t('Reset Password')}
                         </Button>
                         <Button variant="text" sx={{ color: 'secondary.dark' }}
                             onClick={() => navigate('/login')}>
-                            Back to Login
+                            {t("Back to Login")}
                         </Button>
                     </Box>
                 </Box>

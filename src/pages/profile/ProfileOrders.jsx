@@ -10,7 +10,7 @@ export default function ProfileOrders() {
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
     return (
-        <Box my={5}>
+        <Box py={5}>
             <TableContainer>
                 <Table>
                     <TableHead>

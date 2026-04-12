@@ -4,10 +4,6 @@ import Loader from '../../ui/loader/Loader';
 import { Box, Button, Card, CardMedia, Container, Grid, Rating, TextField, Typography } from '@mui/material';
 import useAddCart from '../../hooks/useAddCart';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
-import useAddReview from '../../hooks/useAddReview';
-import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import ProductReviews from '../../components/review/ProductReviews';
 import CreateReviews from '../../components/review/CreateReviews';
 
@@ -20,7 +16,7 @@ export default function ProductsDetails() {
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
     const product = data.response;
-   
+
 
     return (
         <Container maxWidth={'lg'}>
@@ -61,9 +57,9 @@ export default function ProductsDetails() {
                 </Grid>
             </Box>
 
-          
-<CreateReviews />
-       <ProductReviews reviews={product.reviews} />
+
+            <CreateReviews id={product.id} />
+            <ProductReviews reviews={product.reviews} />
         </Container>
     )
 }

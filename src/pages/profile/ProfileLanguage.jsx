@@ -10,7 +10,7 @@ export default function ProfileLanguage() {
     }
 
     return (
-        <Box mt={5}>
+        <Box pt={5}>
             <Stack direction="row" alignItems="center" gap={2}
                 onClick={changeLanguage}
                 sx={{ cursor: 'pointer', p: 2, borderRadius: 2, border: '1px solid', borderColor: 'secondary.main', width: 'fit-content', '&:hover': { bgcolor: 'secondary.main' } }}>

@@ -1,6 +1,6 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import AuthAxiosInstance from '../api/AuthAxiosInstance'
-import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 import i18n from '../i18n'
 
 export default function useAddReview(id) {
@@ -11,11 +11,29 @@ export default function useAddReview(id) {
             return response.data
         },
         onSuccess: () => {
-            toast.success(i18n.language === 'ar' ? 'تم إضافة التقييم' : 'Review added successfully!')
+            Swal.fire({
+                icon: 'success',
+                title: i18n.language === 'ar' ? 'تم إضافة التقييم' : 'Review added successfully!',
+                showConfirmButton: false,
+                timer: 2000
+            })
             queryClient.invalidateQueries({ queryKey: ['product', i18n.language, id] })
         },
         onError: (error) => {
-            toast.error(error.response.data.message || 'Something went wrong')
+            const errors = error?.response?.data?.errors
+            if (errors) {
+                Object.values(errors).forEach(error => {
+                    Swal.fire({
+                        icon: 'error',
+                        text: error[0]
+                    })
+                })
+            } else {
+                Swal.fire({
+                    icon: 'error',
+                    text: error?.response?.data?.message || 'Something went wrong'
+                })
+            }
         }
     })
 }

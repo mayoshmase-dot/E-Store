@@ -1,16 +1,20 @@
 import { AppBar, Box, Toolbar, Typography, IconButton, Badge, Drawer, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Divider, Link } from '@mui/material';
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LoginIcon from '@mui/icons-material/Login';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import DarkMode from '@mui/icons-material/DarkMode'
+import LightMode from '@mui/icons-material/LightMode'
+import LanguageIcon from '@mui/icons-material/Language';
 import { Link as RouterLink, useNavigate } from "react-router-dom"
 import MenuIcon from '@mui/icons-material/Menu';
 import useAuthStore from '../../store/useAuthStore';
 import useCart from '../../hooks/useCart'
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
+import useThemeStore from '../../store/useThemeStore';
+import i18n from '../../i18n';
 
 export default function Navbar() {
   const token = useAuthStore((state) => state.token)
@@ -18,9 +22,14 @@ export default function Navbar() {
   const { t } = useTranslation();
   const navigate = useNavigate()
   const [drawerOpen, setDrawerOpen] = useState(false)
-
+  const changeLanguage = () => {
+    const newLang = i18n.language == 'ar' ? 'en' : "ar"
+    i18n.changeLanguage(newLang)
+  }
   const { data } = useCart()
   const cartCount = data?.items?.length || 0;
+  const mode = useThemeStore((state) => state.mode)
+  const toggleTheme = useThemeStore((state) => state.toggleTheme)
 
   const handleLogout = () => {
     logout();
@@ -36,20 +45,32 @@ export default function Navbar() {
             {t('Store')}
           </Typography>
 
-          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5  }}>
-            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none' to='/' >{t('Home')}</Link>
-            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none' >{t('About')}</Link>
-            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none'>{t('Contact Us')}</Link>
-            <Link component={RouterLink} sx={{color:'secondary.dark','&:hover':{color:'primary.main'}}}  underline='none'>{t('Blog')}</Link>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, gap: 5, alignItems: 'center' }}>
+            <Link component={RouterLink} sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }} underline='none' to='/'>{t('Home')}</Link>
+            <Link component={RouterLink} sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' } }} underline='none' to='/products'>{t('Shopping')}</Link>
+            <Link sx={{ color: 'secondary.dark', cursor: 'pointer', '&:hover': { color: 'primary.main' } }} underline='none'>{t('About')}</Link>
+            {token && (
+              <Badge badgeContent={cartCount} color='primary'  >
+                <Link component={RouterLink} to='/cart' sx={{ color: 'secondary.dark', '&:hover': { color: 'primary.main' }, display: 'flex', alignItems: 'center' }} underline='none'>
+                  {t('Cart')}
+                </Link>
+              </Badge>
+            )}
           </Box>
 
-          <Box sx={{ display: { xs: 'none', sm: 'flex' } }}>
-            <IconButton sx={{ color: 'primary.main' }}><FavoriteBorderIcon /></IconButton>
+          <Box sx={{ display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
+
+            <Badge badgeContent={i18n.language === 'ar' ? 'EN' : 'AR'} sx={{ color: 'primary.main' }}>
+              <IconButton sx={{ color: 'primary.main' }} onClick={changeLanguage}>
+                <LanguageIcon />
+              </IconButton>
+            </Badge>
+
+            <IconButton sx={{ color: 'primary.main' }} onClick={toggleTheme}>
+              {mode === 'light' ? <LightMode sx={{ color: 'orange' }} /> : <DarkMode sx={{ color: 'primary.main' }} />}
+            </IconButton>
             {token ? (
               <>
-                <Badge badgeContent={cartCount} color="primary">
-                  <IconButton component={RouterLink} to='/cart' sx={{ color: 'primary.main' }}><ShoppingCartOutlinedIcon /></IconButton>
-                </Badge>
                 <IconButton onClick={handleLogout} sx={{ color: 'primary.main' }}><LogoutIcon /></IconButton>
                 <IconButton component={RouterLink} to='/profile' sx={{ color: 'primary.main' }}><AccountCircleIcon /></IconButton>
               </>
@@ -70,12 +91,19 @@ export default function Navbar() {
       <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <Box sx={{ width: 220 }} onClick={() => setDrawerOpen(false)}>
           <List>
-            <ListItem><Typography fontWeight={700} color="primary">{t('Store')}</Typography></ListItem>
+            <ListItem><Typography color="primary">{t('Store')}</Typography></ListItem>
             <Divider />
             <ListItemButton component={RouterLink} to='/'><ListItemText primary={t('Home')} /></ListItemButton>
-            <ListItemButton component={RouterLink} to='/'><ListItemText primary={t('About')} /></ListItemButton>
-            <ListItemButton component={RouterLink} to='/'><ListItemText primary={t('Contact Us')} /></ListItemButton>
-            <ListItemButton component={RouterLink} to='/'><ListItemText primary={t('Blog')} /></ListItemButton>
+            <ListItemButton component={RouterLink} to='/products'><ListItemText primary={t('Shopping')} /></ListItemButton>
+            <ListItemButton><ListItemText primary={t('About')} /></ListItemButton>
+            <ListItemButton onClick={changeLanguage}>
+              <ListItemIcon><LanguageIcon /></ListItemIcon>
+              <ListItemText primary={i18n.language === 'ar' ? 'EN' : 'AR'} />
+            </ListItemButton>
+            <ListItemButton onClick={toggleTheme}>
+              <ListItemIcon>{mode === 'light' ? <LightMode sx={{ color: 'orange' }} /> : <DarkMode />}</ListItemIcon>
+              <ListItemText primary={mode === 'light' ? t('Dark Mode') : t('Light Mode')} />
+            </ListItemButton>
             <Divider />
             {token ? (
               <>

@@ -6,8 +6,10 @@ import { useForm } from 'react-hook-form'
 import { registerSchema } from '../../../validation/RegisterSchema';
 import { useState } from 'react';
 import axiosInstance from '../../../api/axiosInstance';
+import { useTranslation } from 'react-i18next';
 
 export default function Register() {
+  const { t } = useTranslation()
   const [serverErrors, setServerErrors] = useState([]);
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm({ resolver: yupResolver(registerSchema) });
   const registerForm = async (values) => {
@@ -24,16 +26,16 @@ export default function Register() {
       <Box component={'section'} display={'flex'} flexDirection={'column'} bgcolor={'rgba(205, 207, 207, 0.34)'}
         mx={'auto'} p={3} boxShadow={'0px 1px 3px rgba(0, 0, 0, 0.63)'} borderRadius={5}>
         <Box display={'flex'} flexDirection={'column'} gap={2}>
-          <Typography component={'h1'} variant='p'>Register</Typography>
-          <Typography component={'h3'} variant='body2' color='#6C7275'>Already have an account?
-            <Link component={ReactLink} to={'/login'} underline='none' color='black' fontWeight={'bold'}> log in</Link>
+          <Typography component={'h1'} variant='p'>{t("Sign Up")}</Typography>
+          <Typography component={'h3'} variant='body2' color='#6C7275'>{t("Already have an account ? ")}
+            <Link component={ReactLink} to={'/login'} underline='none' color='black' fontWeight={'bold'}> {t("Sign In")}</Link>
           </Typography>
         </Box>
         {serverErrors?.length > 0 && (
           <Box mt={2}>
-            {serverErrors.map((err) => (
+            {serverErrors.map((error) => (
               <Typography color='red'>
-                {err}
+                {error}
               </Typography>
             ))}
           </Box>
@@ -41,30 +43,30 @@ export default function Register() {
 
         <Box component={'form'} display={'flex'} flexDirection={'column'} gap={3} mt={2}
           onSubmit={handleSubmit(registerForm)} >
-          <TextField {...register('userName')} fullWidth label="User Name " variant="standard"
+          <TextField {...register('userName')} fullWidth label={t("User Name")} variant="standard"
             error={errors.userName} helperText={errors.userName?.message} />
-          <TextField {...register('fullName')} fullWidth label="Full Name" variant="standard"
+          <TextField {...register('fullName')} fullWidth label={t("Full Name")} variant="standard"
             error={errors.fullName} helperText={errors.fullName?.message} />
-          <TextField {...register('email')} fullWidth label="Email" variant="standard"
+          <TextField {...register('email')} fullWidth label={t("Email")} variant="standard"
             error={errors.email} helperText={errors.email?.message} />
-          <TextField {...register('password')} fullWidth label="Password" variant="standard"
+          <TextField {...register('password')} fullWidth label={t("Password")} variant="standard"
             error={errors.password} helperText={errors.password?.message} />
-          <TextField {...register('phoneNumber')} fullWidth label="Phone Number" variant="standard"
+          <TextField {...register('phoneNumber')} fullWidth label={t("Phone Number")} variant="standard"
             error={errors.phoneNumber} helperText={errors.phoneNumber?.message} />
 
           <Box display={'flex'} alignItems={'center'}>
             <Checkbox />
-            <Typography color='#6C7275'>I agree with {' '}
+            <Typography color='#6C7275'>{t("I agree with")} {' '}
               <Box component={'span'} color='black' fontWeight={'bold'}>
-                Privacy Policy
+                {t("Privacy Policy")}
               </Box>
-              {' '} and {' '}
+              {' '} {t("and")} {' '}
               <Box component={'span'} color='black' fontWeight={'bold'}>
-                Terms of Use
+                {t("Terms of Use")}
               </Box>
             </Typography>
           </Box>
-          <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }} disabled={isSubmitting}>{isSubmitting ? <CircularProgress /> : "Register"}</Button>
+          <Button type='submit' variant="contained" sx={{ backgroundColor: 'black', borderRadius: 5 }} disabled={isSubmitting}>{isSubmitting ? <CircularProgress /> : t("Sign Up") }</Button>
 
         </Box>
       </Box ></Box>

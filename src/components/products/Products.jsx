@@ -14,16 +14,14 @@ export default function Products() {
 
     return (
         <Container maxWidth='lg'>
-            <Box my={5}>
+            <Box>
                 <Typography component={'h2'} variant='h5' mb={3} fontWeight={'bold'}>
                     {t('Products')}
                 </Typography>
                 <Grid container spacing={5}>
                     {data.response.data.map((product) =>
                         <Grid item size={{ xs: 12, sm: 6, md: 4, lg: 3 }} position={'relative'} bgcolor={'secondary.main'} key={product.id}>
-                            <Link component={ReactLink} to={`/product/${product.id}`} underline='none' >
-                                <Product product={product} />
-                            </Link>
+                            <Product product={product} />
                             <IconButton sx={{ position: 'absolute', top: 0, right: 0, color: 'secondary.dark', '&:hover': { color: 'red' } }}>
                                 <FavoriteBorderIcon />
                             </IconButton>
