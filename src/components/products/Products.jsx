@@ -5,10 +5,14 @@ import Product from '../../ui/products/Products';
 import { Link as ReactLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { useState } from 'react';
 
 export default function Products() {
     const { t } = useTranslation();
-    const { data, isError, isLoading, error } = useProducts();
+    const [fillter, setFillter] = useState({
+        limit: 3, page: 1, sortBy: 'price', price: '', search: '', ascending: 'false'
+    })
+    const { data, isError, isLoading, error } = useProducts(fillter)
     if (isLoading) return <Loader />
     if (isError) return <Box color={'red'}>{error.message}</Box>
 

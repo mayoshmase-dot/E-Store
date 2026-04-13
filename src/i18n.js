@@ -116,6 +116,20 @@ i18n
                     "Forgot Password?": "Forgot Password?",
                     "Enter your email address and we'll send you a link to reset your password.": "Enter your email address and we'll send you a link to reset your password.",
                     "Send Reset Link": "Send Reset Link",
+                    "Filters": "Filters",
+                    "Search Products": "Search Products",
+                    "Search Products...": "Search Products...",
+                    "Price Range": "Price Range",
+                    "Min Price": "Min Price",
+                    "Max Price": "Max Price",
+                    "Sort By": "Sort By",
+                    "Price": "Price",
+                    "Name": "Name",
+                    "Date": "Date",
+                    "Order": "Order",
+                    "Descending": "Descending",
+                    "Ascending": "Ascending",
+                    "Apply Filters": "Apply Filters"
                 }
             },
             ar: {
@@ -228,6 +242,20 @@ i18n
                     "Forgot Password?": "هل نسيت كلمة المرور؟",
                     "Enter your email address and we'll send you a link to reset your password.": "أدخل بريدك الإلكتروني وسنرسل لك رمزاً لإعادة تعيين كلمة المرور.",
                     "Send Reset Link": "إرسال الرمز",
+                    "Filters": "الفلاتر",
+                    "Search Products": "ابحث عن المنتج",
+                    "Search Products...": "ابحث عن المنتج...",
+                    "Price Range": "نطاق السعر",
+                    "Min Price": "أقل سعر",
+                    "Max Price": "أعلى سعر",
+                    "Sort By": "ترتيب حسب",
+                    "Price": "السعر",
+                    "Name": "الاسم",
+                    "Date": "التاريخ",
+                    "Order": "الترتيب",
+                    "Descending": "تنازلي",
+                    "Ascending": "تصاعدي",
+                    "Apply": "تطبيق "
                 }
             }
         },
