@@ -10,7 +10,13 @@ import { useState } from 'react';
 export default function Products() {
     const { t } = useTranslation();
     const [fillter, setFillter] = useState({
-        limit: 3, page: 1, sortBy: 'price', price: '', search: '', ascending: 'false'
+        limit: 3,
+        page: 1,
+        sortBy: "price",
+        minPrice: "",
+        maxPrice: "",
+        search: "",
+        ascending: "false"
     })
     const { data, isError, isLoading, error } = useProducts(fillter)
     if (isLoading) return <Loader />
